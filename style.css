@@ -1,0 +1,76 @@
+body {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+}
+
+header {
+    display: flex;
+
+}
+
+.right-links {
+    display: flex;
+    margin-left: auto;
+    gap: 20px;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 80px;
+}
+
+.maincaption {
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+}
+
+.learnmore {
+    text-align: center;
+}
+.cards {
+    display: flex;
+    gap: 5%;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+}
+
+.quote {
+    margin: auto;
+}
+
+.call-to-action {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.sign-up {
+    height: 30px;
+    width: 80px;
+}
+
+footer {
+    text-align: center;
+}
