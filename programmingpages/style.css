@@ -1,0 +1,118 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #1F2937;
+}
+
+header {
+    display: flex;
+    font-size: 24px;
+    color: #F9FAF8;
+}
+
+.right-links {
+    display: flex;
+    margin-left: auto;
+    gap: 20px;
+    color: #E5E7EB;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 80px;
+    flex-wrap: wrap;
+    color: #E5E7EB;
+    font-size: 18px;
+}
+
+.maincaption {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.learnmore {
+    text-align: center;
+}
+.cards {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    margin: 10px;
+}
+
+.boxed {
+    border: 0.25em;
+    border-color: #3882F6;
+    border-style: solid;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.quote {
+    text-align: center;
+    background-color: #E5E7EB;
+    font-size: 36px;
+    font-style: italic;
+    color: #1F2937;
+    padding: 50px;
+}
+
+.call-to-action {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 20%;
+    gap: 20px;
+    align-items: center;
+    background-color: #3882F6;
+    padding: 10px 100px;
+    color: #F9FAF8;
+    border-radius: 10px;
+}
+
+.sign-up {
+    height: 30px;
+    width: 80px;
+}
+
+footer {
+    text-align: center;
+    color: #E5E7EB;
+    background-color: #1F2937;
+}
+
+button {
+    background-color: #3882F6;
+    border-radius: 5px;
+    border-color: #F9FAF8;
+}
+
+a {
+    text-decoration: none;
+    color: #F9FAF8;
+}
