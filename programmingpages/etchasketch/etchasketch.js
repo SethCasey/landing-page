@@ -7,13 +7,16 @@ const grid = document.querySelector('#game');
 grid.style.display = 'flex';
 grid.style.flexDirection = 'column';
 const line = [];
+let size;
 //const line = document.createElement('div');
 //need to move this createElement somewhere more productive!
 
 createSquare = (lineNumber) => { //creates a single div as defined within
     const square = document.createElement('div');
     square.classList.add('square');
-    square.setAttribute('style', 'border: 25px solid white;');
+    square.style.padding = `${size}%`;
+    square.style.backgroundColor = "#999999";
+    //square.setAttribute('style', 'border: 25px solid white;');
     square.style.margin = '1px';
     line[lineNumber].appendChild(square);
 };
@@ -35,10 +38,13 @@ divCreator = (lineNumber) => {
 
 createRows = (numberOfRows) => {
     line[numberOfRows];
+    size = 75/numberOfRows;//chose 75 because it fits my browser properly
+    console.log(size);
     for (k = 0; k < numberOfRows; k++) {
         divCreator(numberOfRows);
         createRowOfSquares(numberOfRows);
     }
 };
 
-createRows(4);
+
+createRows(10);
