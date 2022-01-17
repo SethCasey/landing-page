@@ -17,7 +17,7 @@ createSquare = (lineNumber) => { //creates a single div as defined within
     square.style.padding = `${size}%`;
     square.style.backgroundColor = "#999999";
     //square.setAttribute('style', 'border: 25px solid white;');
-    square.style.margin = '1px';
+    //square.style.margin = '1px';
     line[lineNumber].appendChild(square);
 };
 
@@ -38,7 +38,7 @@ divCreator = (lineNumber) => {
 
 createRows = (numberOfRows) => {
     line[numberOfRows];
-    size = 75/numberOfRows;//chose 75 because it fits my browser properly
+    size = 80/numberOfRows;//chose 80 because it fits my browser properly
     console.log(size);
     for (k = 0; k < numberOfRows; k++) {
         divCreator(numberOfRows);
@@ -47,4 +47,4 @@ createRows = (numberOfRows) => {
 };
 
 
-createRows(10);
+createRows(20);
