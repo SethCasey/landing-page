@@ -8,16 +8,20 @@ grid.style.display = 'flex';
 grid.style.flexDirection = 'column';
 const line = [];
 let size;
+let colorValue;
+let square;
+let squareId = 0;
+
 //const line = document.createElement('div');
 //need to move this createElement somewhere more productive!
 
 createSquare = (lineNumber) => { //creates a single div as defined within
-    const square = document.createElement('div');
+    square = document.createElement('div');
     square.classList.add('square');
+    square.setAttribute('id', `${squareId}`); //adds unique ID to each square
+    squareId++;
     square.style.padding = `${size}%`;
-    square.style.backgroundColor = "#999999";
-    //square.setAttribute('style', 'border: 25px solid white;');
-    //square.style.margin = '1px';
+    square.style.backgroundColor = `#${colorValue}`;
     line[lineNumber].appendChild(square);
 };
 
@@ -39,7 +43,7 @@ divCreator = (lineNumber) => {
 createRows = (numberOfRows) => {
     line[numberOfRows];
     size = 80/numberOfRows;//chose 80 because it fits my browser properly
-    console.log(size);
+    colorValue = 999999;
     for (k = 0; k < numberOfRows; k++) {
         divCreator(numberOfRows);
         createRowOfSquares(numberOfRows);
@@ -47,4 +51,5 @@ createRows = (numberOfRows) => {
 };
 
 
-createRows(20);
+createRows(4);
+
