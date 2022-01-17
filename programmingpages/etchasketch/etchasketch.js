@@ -10,7 +10,7 @@ const line = [];
 let size;
 let colorValue;
 let square;
-let squareId = 0;
+let squareId;
 
 //const line = document.createElement('div');
 //need to move this createElement somewhere more productive!
@@ -18,7 +18,8 @@ let squareId = 0;
 createSquare = (lineNumber) => { //creates a single div as defined within
     square = document.createElement('div');
     square.classList.add('square');
-    square.setAttribute('id', `${squareId}`); //adds unique ID to each square
+    console.log(`s${squareId}`);
+    square.setAttribute('id', `s${squareId}`); //adds unique ID to each square
     squareId++;
     square.style.padding = `${size}%`;
     square.style.backgroundColor = `#${colorValue}`;
@@ -44,6 +45,7 @@ createRows = (numberOfRows) => {
     line[numberOfRows];
     size = 80/numberOfRows;//chose 80 because it fits my browser properly
     colorValue = 999999;
+    squareId = 0;
     for (k = 0; k < numberOfRows; k++) {
         divCreator(numberOfRows);
         createRowOfSquares(numberOfRows);
