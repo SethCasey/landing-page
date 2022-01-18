@@ -2,9 +2,16 @@ body {
     background-color: lightskyblue;
 }
 
-#game {
+game {
     display: flex;
     flex-shrink: 1;
     width: 400px;
     height: 400px;
+}
+
+.square {
+    background-color: #999999;
+}
+.touched {
+    background-color: #000000;
 }
