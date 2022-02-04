@@ -23,22 +23,15 @@ let lastNumber = null;
 let nextNumber = null;
 let selectedNumber = null;
 let currentSelection;
-//this numberButton only returns the first numberButton...
-//Gotta look up how to return ALL of the individuals buttons
-//with their own value. Probably need to iterate/loop through
-//them
-let numberButton = document.querySelector(".numberButton")
+let numberButtons = (document.querySelectorAll(".numberButton"))
 let result = document.querySelector(".result");
 let addButton = document.querySelector("#addButton");
-let numberField = document.querySelector(".numberField");//need to do document.getElementsByClassName('numberButton')
-//need to do document.getElementBy????????????
-//need some better variables I think
+let numberField = document.querySelector(".numberField");
 
-//This only returns the first numberButton
-//Fix it up top, but also need to loop through whatever array
-//or node list gets created by using querySelectorAll or something
-numberButton.addEventListener('click', () => {
-    currentSelection = numberButton.getAttribute("value");
+numberButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+    currentSelection = button.getAttribute("value");
+    })
 });
 
 numberField.addEventListener('click', () => {
