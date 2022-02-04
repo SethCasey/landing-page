@@ -22,20 +22,30 @@ const operate = (doStuff, a, b) => {
 let lastNumber = null;
 let nextNumber = null;
 let selectedNumber = null;
-let //need to do document.getElementsByClassName('numberButton')
+let currentSelection;
+let numberButton = document.querySelector(".numberButton")
+let result = document.querySelector(".result");
+let addButton = document.querySelector("#addButton");
+let numberField = document.querySelector(".numberField");//need to do document.getElementsByClassName('numberButton')
 //need to do document.getElementBy????????????
 //need some better variables I think
 
 numberButton.addEventListener('click', () => {
+    currentSelection = numberButton.getAttribute("value");
+});
+
+numberField.addEventListener('click', () => {
     if (lastNumber == null) {
-        lastNumber = numberButton.value;
+        lastNumber = currentSelection;
     } else {
-        nextNumber = numberButton.value;
+        nextNumber = currentSelection;
     }
     console.log(lastNumber);
     console.log(nextNumber);
 });
 
-addition.addEventListener('click', add()) = () => {
-
-};
+addButton.addEventListener('click', () => {
+    if (nextNumber == null) {
+        result = operate(add(lastNumber, lastNumber));
+    }
+});
