@@ -25,9 +25,14 @@ let selectedNumber = null;
 let currentSelection;
 let numberButtons = (document.querySelectorAll(".numberButton"))
 let addButton = document.querySelector("#addButton");
+let subtractButton = document.querySelector("#subtractButton");
+let multiplyButton = document.querySelector("#multiplyButton");
+let divideButton = document.querySelector("#divideButton");
+let chosenOperation;
 let numberField = document.querySelector(".numberField");
 let display = document.querySelector(".result")
 let clear = document.querySelector("#clearButton")
+let operators = (document.querySelectorAll(".operators"))
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -35,27 +40,59 @@ numberButtons.forEach((button) => {
     })
 });
 
+operators.forEach((button) => {
+    button.addEventListener('click', () => {
+        if(!lastNumber) {
+            lastNumber = nextNumber;
+            nextNumber = null;
+        } else {
+        lastNumber = result;
+        nextNumber = null;
+        }
+    })
+});
+
+addButton.addEventListener('click', () => {
+    chosenOperation = add;
+});
+
+subtractButton.addEventListener('click', () => {
+    chosenOperation = subtract;
+});
+
+multiplyButton.addEventListener('click', () => {
+    chosenOperation = multiply;
+});
+
+divideButton.addEventListener('click', () => {
+    chosenOperation = divide;
+});
+
 numberField.addEventListener('click', () => {
-    if (lastNumber == null) {
-        lastNumber = currentSelection;
-    } else {
+    if (nextNumber == null) {
         nextNumber = currentSelection;
+    } else {
+        nextNumber += currentSelection;
     }
     console.log(lastNumber);
     console.log(nextNumber);
-    updateDisplay(currentSelection);
+    updateDisplay(nextNumber);
 });
 
-//errm okay so this works, but... I need it to update
-//after I've hit equals, not before... hmm.
-//Okay, I need to move the actual math to the equals 
-//button? somehow... And pass the operation in too?
-addButton.addEventListener('click', () => {
+equalsButton.addEventListener('click', () => {
     if (nextNumber == null) {
-        result = operate(add(lastNumber, lastNumber));
+        //is there a way to store
+        //the function chosen and use it here?
+        //hmm
+        result = operate(chosenOperation(lastNumber, lastNumber));
     } else if (nextNumber && lastNumber) {
-        
+        //how to use operator?
+        result = operate(chosenOperation, parseInt(lastNumber), parseInt(nextNumber));
+        console.log(result);
     }
+    lastNumber = result;
+    nextNumber = null;
+    updateDisplay(result);
 });
 
 clear.addEventListener('click', () => {
