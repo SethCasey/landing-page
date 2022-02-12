@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.display {
+    border: solid black 2px;
+    border-radius: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+.workingSection {
+    display: flex;
+    gap: 10px;
+}
+
+.numberField {
+    display: flex;
+    flex-direction: column;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    width: 64px;
+    height: 40px;
+    margin: 5px;
+}

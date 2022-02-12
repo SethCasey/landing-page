@@ -23,14 +23,15 @@ let lastNumber = null;
 let nextNumber = null;
 let selectedNumber = null;
 let currentSelection;
+const chosenOperation = [];
 let numberButtons = (document.querySelectorAll(".numberButton"))
 let addButton = document.querySelector("#addButton");
 let subtractButton = document.querySelector("#subtractButton");
 let multiplyButton = document.querySelector("#multiplyButton");
 let divideButton = document.querySelector("#divideButton");
-let chosenOperation;
 let numberField = document.querySelector(".numberField");
 let display = document.querySelector(".result")
+let previousWork = document.querySelector(".previousWork");
 let clear = document.querySelector("#clearButton")
 let operators = (document.querySelectorAll(".operators"))
 
@@ -45,6 +46,13 @@ operators.forEach((button) => {
         if(!lastNumber) {
             lastNumber = nextNumber;
             nextNumber = null;
+        } else if (lastNumber && nextNumber && chosenOperation[0]) {
+            result = operate(chosenOperation[0], parseInt(lastNumber), parseInt(nextNumber));
+            updateDisplay(result);
+            lastNumber = result;
+            nextNumber = null;
+            chosenOperation[0] = chosenOperation[1];
+            chosenOperation[1] = null;
         } else {
         lastNumber = result;
         nextNumber = null;
@@ -53,19 +61,35 @@ operators.forEach((button) => {
 });
 
 addButton.addEventListener('click', () => {
-    chosenOperation = add;
+    if (!chosenOperation[0]) {
+        chosenOperation[0] = add;
+    } else {
+        chosenOperation[1] = add;
+    }
 });
 
 subtractButton.addEventListener('click', () => {
-    chosenOperation = subtract;
+    if (!chosenOperation[0]) {
+       chosenOperation[0] = subtract; 
+    } else {
+    chosenOperation[1] = subtract; 
+    }
 });
 
 multiplyButton.addEventListener('click', () => {
-    chosenOperation = multiply;
+    if (!chosenOperation[0]) {
+       chosenOperation[0] = multiply; 
+    } else {
+    chosenOperation[1] = multiply; 
+    }
 });
 
 divideButton.addEventListener('click', () => {
-    chosenOperation = divide;
+    if (!chosenOperation[0]) {
+       chosenOperation[0] = divide; 
+    } else {
+    chosenOperation[1] = divide; 
+    }
 });
 
 numberField.addEventListener('click', () => {
@@ -81,18 +105,15 @@ numberField.addEventListener('click', () => {
 
 equalsButton.addEventListener('click', () => {
     if (nextNumber == null) {
-        //is there a way to store
-        //the function chosen and use it here?
-        //hmm
-        result = operate(chosenOperation(lastNumber, lastNumber));
-    } else if (nextNumber && lastNumber) {
-        //how to use operator?
-        result = operate(chosenOperation, parseInt(lastNumber), parseInt(nextNumber));
+        result = operate(chosenOperation[0], parseInt(lastNumber), parseInt(lastNumber));
+    } else {
+        result = operate(chosenOperation[0], parseInt(lastNumber), parseInt(nextNumber));
         console.log(result);
     }
     lastNumber = result;
     nextNumber = null;
     updateDisplay(result);
+    chosenOperation[0, 1] = (null, null);
 });
 
 clear.addEventListener('click', () => {
@@ -110,3 +131,6 @@ const updateDisplay = (input, operation) => {
         display.textContent = input;
     }
 };
+
+const updatePreviousWork = (input, operation) => {
+}
