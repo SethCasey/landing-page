@@ -34,6 +34,7 @@ let display = document.querySelector(".result")
 let previousWork = document.querySelector(".previousWork");
 let clear = document.querySelector("#clearButton")
 let operators = (document.querySelectorAll(".operators"))
+let posNeg = document.querySelector("#posNeg")
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -105,30 +106,49 @@ numberField.addEventListener('click', () => {
 
 equalsButton.addEventListener('click', () => {
     if (nextNumber == null) {
-        result = operate(chosenOperation[0], parseInt(lastNumber), parseInt(lastNumber));
+        result = operate(chosenOperation[0], parseFloat(lastNumber), parseFloat(lastNumber));
     } else {
-        result = operate(chosenOperation[0], parseInt(lastNumber), parseInt(nextNumber));
+        result = operate(chosenOperation[0], parseFloat(lastNumber), parseFloat(nextNumber));
         console.log(result);
     }
     lastNumber = result;
     nextNumber = null;
-    updateDisplay(result);
-    chosenOperation[0, 1] = (null, null);
+    updateDisplay(lastNumber);
+    chosenOperation[0] = null;
+    chosenOperation[1] = null;
+    console.log(`ChosenOperation[0] is ${chosenOperation[0]}`);
+    console.log(`ChosenOperation[1] is ${chosenOperation[1]}`);
 });
 
 clear.addEventListener('click', () => {
     lastNumber = null;
     nextNumber = null;
+    chosenOperation[0, 1] = (null, null);
     console.log(lastNumber);
     console.log(nextNumber);
-    updateDisplay("Cleared!");
+    updateDisplay(0);
+    
 });
+
+//okay there's something pretty wrong here. And I think it has to do
+//with me switching things back and forth between strings and numbers.
+//I don't think it works right with parseFloat. So maybe I need to 
+//refactor by using strings only in the "display" function, and ensuring
+//that I'm actually using numbers everywhere else
+// posNeg.addEventListener('click', () => {
+//         lastNumber = lastNumber*(-1);
+//         updateDisplay(lastNumber);
+//         console.log("lastNumber used");
+//         chosenOperation[0, 1] = (null, null);
+// });
 
 const updateDisplay = (input, operation) => {
     if (input && operation) {
         display.textContent += `${operation} ${input}`;
+        console.log("Update display used input && operation statement")
     } else {
-        display.textContent = input;
+        display.textContent = (`${input}`);
+        console.log("update display used just input");
     }
 };
 

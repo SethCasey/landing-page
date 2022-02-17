@@ -8,7 +8,9 @@ body {
     border: solid black 2px;
     border-radius: 5px;
     margin: 5px;
-    text-align: center;
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .workingSection {
