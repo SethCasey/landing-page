@@ -116,3 +116,11 @@ a {
     text-decoration: none;
     color: #F9FAF8;
 }
+
+a.projectLink {
+    color: black;
+}
+
+header > img {
+    max-width: 10vw;
+}
