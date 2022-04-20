@@ -5,6 +5,10 @@ body {
 
 }
 
+a > p {
+    color: black;
+}
+
 .introduction {
     display: flex;
     flex-direction: column;
@@ -16,6 +20,10 @@ header {
     display: flex;
     font-size: 24px;
     color: #F9FAF8;
+}
+
+header > img {
+    max-width: 10vw;
 }
 
 .right-links {
