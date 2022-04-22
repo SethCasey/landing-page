@@ -27,7 +27,8 @@ header {
 }
 
 header > img {
-    max-width: 100px;
+    max-width: 10vw;
+    max-height: 10vw;
 }
 
 .nav {

@@ -123,4 +123,5 @@ a.projectLink {
 
 header > img {
     max-width: 10vw;
+    max-height: 10vw;
 }

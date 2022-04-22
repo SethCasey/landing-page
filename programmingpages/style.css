@@ -24,6 +24,7 @@ header {
 
 header > img {
     max-width: 10vw;
+    max-height: 10vw;
 }
 
 .right-links {
