@@ -3,7 +3,7 @@ body {
     grid-template-columns: 225px 75%;
     grid-template-rows: 125px 1fr;
     margin: 0;
-    height: 100vh;
+    height: 100%;
 }
 
 nav {
@@ -162,6 +162,11 @@ header>.share {
     text-decoration: none;
     color: whitesmoke;
     gap: 10px;
+}
+
+.announcements>h2,
+.trending>h2 {
+    text-align: center;
 }
 
 .content>.trending {
