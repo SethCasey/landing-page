@@ -1,4 +1,21 @@
-let myLibrary = ["Gaunt's Ghosts: The Founding", "Lord of the Rings: The Hobbit"];
+const theFounding = new Book("Gaunt's Ghosts", "The Founding", "Dan Abnett", "Science Fiction", 200, true);
+
+
+let myLibrary = ["Gaunt's Ghosts: The Founding", "Lord of the Rings: The Hobbit",
+    theFounding];
+
+function Book(bookSeries, bookName, bookAuthor, bookGenre, pages, readStatus) {
+    this.bookSeries = "N/A";
+    this.bookName = "N/A";
+    this.bookAuthor = "N/A";
+    this.bookGenre = "N/A";
+    this.pages = "N/A";
+    this.readStatus = false;
+    this.info = function () {
+        return (bookSeries + bookName + bookAuthor + bookGenre + pages + readStatus);
+    }
+}
+
 
 function displayExamples(bookName) {
     const cards = document.querySelector("#cards");
@@ -23,10 +40,6 @@ function fillCard(bookName, description) {
 //  and fillCard()
 
 myLibrary.forEach(displayExamples);
-
-function Book() {
-    //the constructor
-}
 
 function addBookToLibrary() {
 }
