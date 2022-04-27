@@ -37,11 +37,17 @@ header > img {
 .about {
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     gap: 50px;
-    margin: 80px;
     flex-wrap: wrap;
     color: #E5E7EB;
     font-size: 18px;
+}
+
+.about>img {
+    max-width: 30vw;
+    max-height: 30vh;
 }
 
 .maincaption {
@@ -49,6 +55,7 @@ header > img {
     flex-direction: column;
     max-width: 300px;
 }
+
 
 .portfolio {
     display: flex;
@@ -90,23 +97,6 @@ header > img {
     font-style: italic;
     color: #1F2937;
     padding: 50px;
-}
-
-.call-to-action {
-    display: flex;
-    justify-content: space-between;
-    margin: 80px 20%;
-    gap: 20px;
-    align-items: center;
-    background-color: #3882F6;
-    padding: 10px 100px;
-    color: #F9FAF8;
-    border-radius: 10px;
-}
-
-.sign-up {
-    height: 30px;
-    width: 80px;
 }
 
 footer {
