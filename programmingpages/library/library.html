@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="library.css">
+    <script src="./library.js" defer></script>
     <title>Page Template</title>
 </head>
 <body>
@@ -18,13 +19,14 @@
             <a href="https://github.com">GitHub</a>
         </div>
     </header>
-    <div class="nav">
+    <div class="nav" id="nav">
         <p>
             Nav Bar / Tool bar
         </p>
+        <button id="addBook">Add Book</button>
         <a href="">Insert Thing Here</a>
         </div>
-    <div class="cards">
+    <div id="cards">
         <div class="project">
             <a href="">
                 <img src=""
@@ -34,6 +36,27 @@
                 </p>
             </a>
         </div>
+    </div>
+    <div id="formDiv">
+        <form id="formPopUp" action="put">
+            <button id="closePopUp" type="reset">Close</button>
+            <h3>Add Book</h3>
+            <label for="bookSeries">Book Series:</label>
+            <input type="text" name="bookSeries" id="bookSeries">
+            <label for="bookName">Book Name:</label>
+            <input type="text" name="bookName" id="bookName">
+            <label for="bookAuthor">Book Author:</label>
+            <input type="text" name="bookAuthor" id="bookAuthor">
+            <label for="bookGenre">Book Genre:</label>
+            <input type="text" name="bookGenre" id="bookGenre">
+            <label for="pages">Pages:</label>
+            <input type="number" name="pages" id="pages">
+            <label for="readStatus">Read:</label>
+            <input type="checkbox" name="readStatus" id="readStatus">
+            <button id="clearForm" type="reset">Clear Form</button>
+            <button id="submitBook" type="button">Add Book to Library</button>
+            <button id="addAnotherBook" type="button">Add Another Book</button>
+        </form>
     </div>
     <footer>
         <p>Copyright Seth 2021-2022</p>
