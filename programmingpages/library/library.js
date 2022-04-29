@@ -1,5 +1,5 @@
 
-
+//create Book prototype 
 function Book(bookSeries, bookName, bookAuthor, bookGenre, pages, readStatus) {
     this.bookSeries = bookSeries;
     this.bookName = bookName;
@@ -15,13 +15,13 @@ function Book(bookSeries, bookName, bookAuthor, bookGenre, pages, readStatus) {
 Book.prototype = Object.create(Book.prototype);
 
 
-const theFounding = new Book("Gaunt's Ghosts", "The Founding", "Dan Abnett", "Science Fiction", 200, true);
-const lotr = new Book("LOTR", "The Hobbit", "JRR", "Fantasy", 1000, true);
-let myLibrary = [theFounding, lotr];
+// const theFounding = new Book("Gaunt's Ghosts", "The Founding", "Dan Abnett", "Science Fiction", 200, true);
+// const lotr = new Book("LOTR", "The Hobbit", "JRR", "Fantasy", 1000, true);
+let myLibrary = [];
 // console.log(myLibrary[0]);
 // console.log(myLibrary[1]);
 
-
+//adds book to card and array
 function addBookToLibrary(libraryEntry) {
     const cards = document.querySelector("#cards");
     let project = document.createElement("div");
@@ -29,8 +29,10 @@ function addBookToLibrary(libraryEntry) {
     project.classList.add("project");
     project.id = libraryEntry.bookName;
     cardFromBook(libraryEntry);
+    myLibrary.push(libraryEntry);
 }
 
+//creates card on page to display book entry
 function cardFromBook (eachBook) {
     const selectingProject = document.getElementById(eachBook.bookName);
     for (let [key, value] of Object.entries(eachBook)) {
@@ -57,22 +59,43 @@ function cardFromBook (eachBook) {
     }
 }
 
-function testForExisting () {
-    let bookNameElement = document.getElementById("bookName");
-    let inputBookName = bookNameElement.value;
-    if (inputBookName == bookName) {
+//used to share between testForExisting() function and readFormInput()
+//to ensure duplicate books aren't added 
+let keepGoing = false;
+
+//tests input against existing book. Used in a loop to iterate through library
+function testForExisting (input, testBook) {
+    if (input == testBook) {
             alert("This book already exists!");
             document.getElementById("formPopUp").reset();
+            keepGoing = true;
     }
 }
 
+/* Reads form input, tests input against existing myLibrary[] array
+bookNames to ensure there is no duplicate, creates new Book object,
+adds book object to library, resets form
+*/
 function readFormInput() {
+    keepGoing = false;
     let bookNameElement = document.getElementById("bookName");
     let inputBookName = bookNameElement.value;
-    myLibrary.forEach(testForExisting);
+    let numberOfBooks = myLibrary.length;
+    for (x = 0; x < numberOfBooks; x++) {
+        // console.log(myLibrary[x].bookName);
+        // console.log(inputBookName); 
+        testForExisting(inputBookName, myLibrary[x].bookName);
+    }
+    if (keepGoing) {
+        return;
+    }
+    else if (inputBookName == "") {
+        return;
+    }
     inputBookName = new Book ("Test", inputBookName, "test");
     // console.log(bookName);
     addBookToLibrary(inputBookName);
+    document.getElementById("formPopUp").reset();
 }
 
 // myLibrary.forEach(displayExamples);
@@ -88,6 +111,15 @@ closePopUp.addEventListener("click", () => formPopUp.style.display = "none");
 const submitBook = document.querySelector("#submitBook");
 submitBook.addEventListener("click", () => {
     readFormInput();
-
     formPopUp.style.display="none"});
+submitBook.addEventListener("keydown", function(e) {
+    if (e.key == 'Enter') {
+        readFormInput();
+        formPopUp.style.display="none"}});
+const submitAnotherBook = document.querySelector("#addAnotherBook");
+submitAnotherBook.addEventListener("click", () => {
+    readFormInput();
+})
+    
+
 
