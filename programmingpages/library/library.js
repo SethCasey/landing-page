@@ -22,14 +22,15 @@ let myLibrary = [];
 // console.log(myLibrary[1]);
 
 //adds book to card and array
-function addBookToLibrary(libraryEntry) {
+function addBookToLibrary(inputBookName) {
+    myLibrary.push(inputBookName); //add book to myLibrary array
+    console.log(inputBookName.bookName)
     const cards = document.querySelector("#cards");
     let project = document.createElement("div");
     cards.appendChild(project);
     project.classList.add("project");
-    project.id = libraryEntry.bookName;
-    cardFromBook(libraryEntry);
-    myLibrary.push(libraryEntry);
+    project.id = inputBookName.bookName;
+    cardFromBook(inputBookName);
 }
 
 //creates card on page to display book entry
@@ -92,9 +93,20 @@ function readFormInput() {
     else if (inputBookName == "") {
         return;
     }
-    inputBookName = new Book ("Test", inputBookName, "test");
+    let inputBookSeriesElement = document.getElementById("bookSeries");
+    let inputBookSeries = inputBookSeriesElement.value;
+    let inputBookAuthorElement = document.getElementById("bookAuthor");
+    let inputBookAuthor = inputBookAuthorElement.value;
+    let inputBookGenreElement = document.getElementById("bookGenre");
+    let inputBookGenre = inputBookGenreElement.value;
+    let inputBookPagesElement = document.getElementById("pages");
+    let inputBookPages = inputBookPagesElement.value;
+    let inputBookReadStatusElement = document.getElementById("readStatus");
+    let inputBookReadStatus = inputBookReadStatusElement.value;
+    myLibrary.inputBookName = new Book (inputBookSeries, inputBookName,
+        inputBookAuthor, inputBookGenre, inputBookPages, inputBookReadStatus);
+    addBookToLibrary(myLibrary.inputBookName);
     // console.log(bookName);
-    addBookToLibrary(inputBookName);
     document.getElementById("formPopUp").reset();
 }
 
