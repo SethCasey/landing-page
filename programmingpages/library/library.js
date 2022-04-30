@@ -14,21 +14,23 @@ function Book(bookSeries, bookName, bookAuthor, bookGenre, pages, readStatus) {
 
 Book.prototype = Object.create(Book.prototype);
 
-
-// const theFounding = new Book("Gaunt's Ghosts", "The Founding", "Dan Abnett", "Science Fiction", 200, true);
-// const lotr = new Book("LOTR", "The Hobbit", "JRR", "Fantasy", 1000, true);
-let myLibrary = [];
+const theHobbit = new Book("LOTR", "TheHobbit", "The", "Hobbit", "10", "Read");
+const testBook = new Book("This", "Book", "may", "genre", "2", "unRead");
+const theFounding = new Book("Gaunt's Ghosts", "Founding", "Dan Abnett", "Science Fiction", "200", "Read");
+const lotr = new Book("LOTR", "Hobbit", "JRR", "Fantasy", "40", "UnRead");
+let myLibrary = [theHobbit, testBook, theFounding, lotr];
 // console.log(myLibrary[0]);
 // console.log(myLibrary[1]);
 
 //adds book to card and array
 function addBookToLibrary(inputBookName) {
     myLibrary.push(inputBookName); //add book to myLibrary array
-    console.log(inputBookName.bookName)
+    // console.log(inputBookName.bookName)
     const cards = document.querySelector("#cards");
     let project = document.createElement("div");
     cards.appendChild(project);
     project.classList.add("project");
+    project.classList.add(`${inputBookName.bookName}`);
     project.id = inputBookName.bookName;
     cardFromBook(inputBookName);
 }
@@ -58,6 +60,13 @@ function cardFromBook (eachBook) {
             selectingProject.appendChild(createP);
         }
     }
+    /*is there a better way to add a toggle button for read status?*/
+    const createReadStatusButton = document.createElement("button");
+    createReadStatusButton.classList.add("unread");
+    let readButtonText = document.createTextNode("Unread");
+    createReadStatusButton.appendChild(readButtonText);
+    selectingProject.appendChild(createReadStatusButton);
+
 }
 
 //used to share between testForExisting() function and readFormInput()
@@ -93,6 +102,7 @@ function readFormInput() {
     else if (inputBookName == "") {
         return;
     }
+    /*need to figure out why spaces in names throws error - figure it out!*/
     let inputBookSeriesElement = document.getElementById("bookSeries");
     let inputBookSeries = inputBookSeriesElement.value;
     let inputBookAuthorElement = document.getElementById("bookAuthor");
@@ -132,6 +142,13 @@ const submitAnotherBook = document.querySelector("#addAnotherBook");
 submitAnotherBook.addEventListener("click", () => {
     readFormInput();
 })
+/*need to figure out toggle button for read status on each card*/
+const readButton = document.getElementsByClassName("unread");
+for (i = 0; i < length(readButton); i++) {
+    readButton.addEventListener("click", () => {
+        readButton.classList.add("read");
+        readButton.classList.remove("unread");
+})}
     
 
 

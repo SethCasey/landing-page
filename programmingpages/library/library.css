@@ -127,3 +127,11 @@ body > footer {
 #formDiv>form>#closePopUp {
     justify-self: right;
 }
+
+button.unread {
+    background-color: green;
+}
+
+button.read {
+    background-color: red;
+}
