@@ -12,15 +12,20 @@ function Book(bookSeries, bookName, bookAuthor, bookGenre, pages, readStatus) {
     }
 }
 
-Book.prototype = Object.create(Book.prototype);
+const theHobbit = new Book("LOTR", "TheHobbit", "The", "Hobbit", "10", "read");
+const testBook = new Book("This", "Book", "may", "genre", "2", "unread");
+const theFounding = new Book("Gaunt's Ghosts", "Founding", "Dan Abnett", "Science Fiction", "200", "read");
+const theTwoTowers = new Book("LOTR", "TheTwoTowers", "JRR", "Fantasy", "40", "unread");
 
-const theHobbit = new Book("LOTR", "TheHobbit", "The", "Hobbit", "10", "Read");
-const testBook = new Book("This", "Book", "may", "genre", "2", "unRead");
-const theFounding = new Book("Gaunt's Ghosts", "Founding", "Dan Abnett", "Science Fiction", "200", "Read");
-const lotr = new Book("LOTR", "Hobbit", "JRR", "Fantasy", "40", "UnRead");
-let myLibrary = [theHobbit, testBook, theFounding, lotr];
-// console.log(myLibrary[0]);
-// console.log(myLibrary[1]);
+bookList = [theHobbit, testBook, theFounding, theTwoTowers]
+
+Book.prototype = Object.create(Book.prototype);
+// let myLibrary = [theHobbit, testBook, theFounding, theTwoTowers];
+let myLibrary = []
+
+
+// myLibrary.forEach(displayExamples);
+bookList.forEach(addBookToLibrary);
 
 //adds book to card and array
 function addBookToLibrary(inputBookName) {
@@ -61,11 +66,36 @@ function cardFromBook (eachBook) {
         }
     }
     /*is there a better way to add a toggle button for read status?*/
-    const createReadStatusButton = document.createElement("button");
-    createReadStatusButton.classList.add("unread");
-    let readButtonText = document.createTextNode("Unread");
-    createReadStatusButton.appendChild(readButtonText);
-    selectingProject.appendChild(createReadStatusButton);
+    const createreadStatusButton = document.createElement("button");
+    createreadStatusButton.classList.add("readButton", eachBook.readStatus);
+    let readButtonText = document.createTextNode(eachBook.readStatus);
+    createreadStatusButton.addEventListener("click", () => {
+        if (eachBook.readStatus == "unread") {
+            eachBook.readStatus = "read";
+            createreadStatusButton.classList.add("read");
+            createreadStatusButton.classList.remove("unread");
+            console.log("Changed to read");
+        } else {
+            eachBook.readStatus = "unread";
+            createreadStatusButton.classList.add("unread");
+            createreadStatusButton.classList.remove("read");
+            console.log("Changed to unread");
+        };
+        readButtonText.nodeValue=eachBook.readStatus;
+    })
+    createreadStatusButton.appendChild(readButtonText);
+    selectingProject.appendChild(createreadStatusButton);
+    const deleteThisProject = document.createElement("button");
+    deleteThisProject.classList.add("deleteProject");
+    let deleteButtonText = document.createTextNode("Delete");
+    deleteThisProject.onclick = () => {
+        cardsElement = document.getElementById("cards");
+        cardsElement.removeChild(selectingProject);
+        myLibrary.pop(bookName);
+        console.log(myLibrary);
+    }
+    deleteThisProject.appendChild(deleteButtonText);
+    selectingProject.append(deleteThisProject);
 
 }
 
@@ -82,7 +112,7 @@ function testForExisting (input, testBook) {
     }
 }
 
-/* Reads form input, tests input against existing myLibrary[] array
+/* reads form input, tests input against existing myLibrary[] array
 bookNames to ensure there is no duplicate, creates new Book object,
 adds book object to library, resets form
 */
@@ -111,17 +141,32 @@ function readFormInput() {
     let inputBookGenre = inputBookGenreElement.value;
     let inputBookPagesElement = document.getElementById("pages");
     let inputBookPages = inputBookPagesElement.value;
-    let inputBookReadStatusElement = document.getElementById("readStatus");
-    let inputBookReadStatus = inputBookReadStatusElement.value;
+
+///Gotta work here to figure out how to best get the read status of a book from 
+////the unsubmitted form! Check box kinda ain't great! Maybe radio buttons instead?
+
+
+    let inputBookreadStatusElement = document.getElementById("readStatus");
+    let inputBookreadStatus = inputBookreadStatusElement.value;
     myLibrary.inputBookName = new Book (inputBookSeries, inputBookName,
-        inputBookAuthor, inputBookGenre, inputBookPages, inputBookReadStatus);
+        inputBookAuthor, inputBookGenre, inputBookPages, inputBookreadStatus);
     addBookToLibrary(myLibrary.inputBookName);
     // console.log(bookName);
     document.getElementById("formPopUp").reset();
 }
 
-// myLibrary.forEach(displayExamples);
-myLibrary.forEach(addBookToLibrary);
+function readButtonToggle(input) {
+    console.log("Clicked button!");
+    if (input == "unread"){
+        input.textContent = "read"
+        input.style.backgroundColor = "red";
+    } else {
+        input.textContent = "unread"
+    }
+}
+
+
+
 
 //popup form controls
 const addBookButton = document.getElementById("addBook");
@@ -143,12 +188,8 @@ submitAnotherBook.addEventListener("click", () => {
     readFormInput();
 })
 /*need to figure out toggle button for read status on each card*/
-const readButton = document.getElementsByClassName("unread");
-for (i = 0; i < length(readButton); i++) {
-    readButton.addEventListener("click", () => {
-        readButton.classList.add("read");
-        readButton.classList.remove("unread");
-})}
-    
+
+//event listeners; control for read status
+
 
 

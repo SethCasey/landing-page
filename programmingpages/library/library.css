@@ -128,10 +128,10 @@ body > footer {
     justify-self: right;
 }
 
-button.unread {
+button.readButton.unread {
     background-color: green;
 }
 
-button.read {
+button.readButton.read {
     background-color: red;
 }
