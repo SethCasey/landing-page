@@ -187,7 +187,6 @@ const submitAnotherBook = document.querySelector("#addAnotherBook");
 submitAnotherBook.addEventListener("click", () => {
     readFormInput();
 })
-/*need to figure out toggle button for read status on each card*/
 
 //event listeners; control for read status
 
