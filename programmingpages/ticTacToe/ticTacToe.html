@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../subPageTemplate.css">
+    <link rel="stylesheet" href="./ticTacToe.css">
     <script type="text/javascript" src="./ticTacToe.js" defer></script>
     <title>Page Template</title>
 </head>
@@ -30,7 +31,13 @@
             <a href="../rps/rps.html">Rock Paper Scissors</a>
         </div>
     <div id="gameWindow">
+        <div>
+            <h2>Turn: Player 
+                <span id="turn"></span>
+            </h2>
+        </div>
         <div id="gameBoard">
+            <span id="0"></span>
             <span id="1"></span>
             <span id="2"></span>
             <span id="3"></span>
@@ -39,7 +46,6 @@
             <span id="6"></span>
             <span id="7"></span>
             <span id="8"></span>
-            <span id="9"></span>
         </div>
     </div>
     <footer>
