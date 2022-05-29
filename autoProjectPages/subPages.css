@@ -72,3 +72,12 @@ header > img {
     text-align: center;
     padding: 10px;
 }
+
+body > footer {
+    position: sticky;
+    top: 100vh;
+    background-color: #1F2937;
+    color: #F9FAF8;
+    text-align: center;
+    grid-column: 1 / 3;
+}
