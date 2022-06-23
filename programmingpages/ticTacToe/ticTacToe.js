@@ -1,4 +1,7 @@
 const PlayerFactory = (name, num, symbol, score = 0) => {
+//TODO: Allow players to set customizable name (Instead of One or Two)
+	//Allow creation of AI through toggle button? button?
+	//this would be cool...
     this.name = name;
     this.num = num;
     this.symbol = symbol;

@@ -68,6 +68,11 @@ header > img {
     max-width: 200px;
 }
 
+button.deleteButton {
+    position: relative;
+    float:right;
+}
+
 .project>img,
 .project>*>img {
     border: 0.25em;
