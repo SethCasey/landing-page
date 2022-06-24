@@ -1,5 +1,3 @@
-let Library = [];
-
 class Book {
     constructor(Series, Title, Author, Genre, Pages, status) {
         this.Series = Series;
@@ -95,21 +93,10 @@ class Book {
     };
 };
 
+let Library = [];
+
 let theHobbit = new Book("LOTR", "The Hobbit", "JRR", "Fantasy", 400, false);
 let theFounding = new Book("Gaunt's Ghosts", "Founding", "Dan Abnett", "Science Fiction", 200, true)
-
-class ReadForm {
-    constructor() {
-    };
-
-    addBook() {
-        /*So, the user puts info into the fields, then clicks 'submit'. So,
-        I need to create the object from the fields. Then I can more easily test for
-        whether a duplicate exists - If it does, then delete the object, from the
-        array and alert the user. Ok then...*/
-        
-    };   
-};
 
 bookAdd = (series, bookName, author, genre, pages, readStatus) => {
     new Book(series.value, bookName.value, author.value, genre.value, pages.value, readStatus.checked);
