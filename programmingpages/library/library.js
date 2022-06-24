@@ -12,6 +12,21 @@ class Book {
         this.position = Library.length;
         Library.push(this);
         this.card();
+        this.checkForDuplicate();
+        //Unfortunately, the current implementation of checkForDuplicate(),
+        //which calls the delete() function if needed,
+        //and accordingly the 'delete' function, will delete the FIRST copy
+        //that exists... Overwriting, essentially. I think this is OK? Maybe
+        //even a feature to easily correct an incorrect input?
+    };
+
+    delete() {
+        Library.splice(this.position, 1);
+        let deleter = document.getElementById(`${this.id}`);
+        deleter.remove();
+        for (let x = 0; x < Library.length; x++) {
+            Library[x].position = x;
+        };
     };
 
     card() {
@@ -28,12 +43,7 @@ class Book {
         deleteButton.classList.add("deleteButton");
         project.appendChild(deleteButton);
         deleteButton.addEventListener("click", (e) => {
-            Library.splice(this.position, 1);
-            let deleter = document.getElementById(`${this.id}`);
-            deleter.remove();
-            for (let x = 0; x < Library.length; x++) {
-                Library[x].position = x;
-            };
+            this.delete();
         });
 
 
@@ -74,9 +84,69 @@ class Book {
         });
         project.appendChild(readStatus);
     };
+
+    checkForDuplicate () {
+        let countOfDuplicates = 0;
+        for (let x = 0; x < Library.length; x++) {
+            let bookComp = Library[x];
+            if (this.id == bookComp.id) {countOfDuplicates++};
+            if (countOfDuplicates == 2) {this.delete();};
+        };
+    };
 };
 
 let theHobbit = new Book("LOTR", "The Hobbit", "JRR", "Fantasy", 400, false);
 let theFounding = new Book("Gaunt's Ghosts", "Founding", "Dan Abnett", "Science Fiction", 200, true)
 
+class ReadForm {
+    constructor() {
+    };
 
+    addBook() {
+        /*So, the user puts info into the fields, then clicks 'submit'. So,
+        I need to create the object from the fields. Then I can more easily test for
+        whether a duplicate exists - If it does, then delete the object, from the
+        array and alert the user. Ok then...*/
+        
+    };   
+};
+
+bookAdd = (series, bookName, author, genre, pages, readStatus) => {
+    new Book(series.value, bookName.value, author.value, genre.value, pages.value, readStatus.checked);
+    series.value = "";
+    bookName.value = "";
+    author.value = "";
+    genre.value = "";
+    pages.value = "";
+    readStatus.value = "";
+};
+
+//popup form
+const addBookButton = document.getElementById("addBook");
+const formPopUp = document.querySelector("#formPopUp");
+addBookButton.addEventListener("click", () => {
+    formPopUp.style.display = 'grid'});
+const closePopUp = document.querySelector("#closePopUp");
+closePopUp.addEventListener("click", (e) => formPopUp.style.display = "none");
+const submitBook = document.querySelector("#submitBook");
+//form fields
+let series = document.getElementById("bookSeries");
+let bookName = document.getElementById("bookName");
+let author = document.getElementById("bookAuthor");
+let genre = document.getElementById("bookGenre");
+let pages = document.getElementById("pages");
+let readStatus = document.getElementById("readStatus");
+submitBook.addEventListener("click", (e) => {
+    bookAdd(series, bookName, author, genre, pages, readStatus);
+    formPopUp.style.display="none"});
+
+formPopUp.addEventListener("keydown", function(e) {
+    if (e.key == 'Enter') {
+        bookAdd(series, bookName, author, genre, pages, readStatus)
+        formPopUp.style.display="none"
+    };
+});
+const submitAnotherBook = document.querySelector("#addAnotherBook");
+submitAnotherBook.addEventListener("click", () => {
+    bookAdd(series, bookName, author, genre, pages, readStatus);
+});
