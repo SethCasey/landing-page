@@ -3,7 +3,7 @@ export default function contact(content_div) {
     // just make it HIDDEN and UNHIDDEN
     content_div.textContent = " ";
     let randomStuff = document.createElement("p");
-    randomStuff.textContent = ("HOT DIGGITY DOG!");
+    randomStuff.textContent = ("This is the contact page!");
     content_div.appendChild(randomStuff);
 
     return content_div;

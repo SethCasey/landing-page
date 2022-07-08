@@ -1,6 +1,8 @@
 import saltypig from "./saltypig.jpg";
 
 export default function main_page(content_div) {
+    content_div.textContent = " ";
+
     let content_container = document.createElement("div");
     content_container.id = "current_div";
 
