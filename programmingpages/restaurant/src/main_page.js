@@ -7,7 +7,7 @@ export default function main_page(content_div) {
     content_container.id = "current_div";
 
     let headline = document.createElement("h2");
-    headline.innerHTML = ("The Salty Pig!");
+    headline.textContent = ("The Salty Pig!");
     content_container.appendChild(headline);
 
     const piggy = new Image();
@@ -15,9 +15,19 @@ export default function main_page(content_div) {
     piggy.style.width = "20vw";
     content_container.appendChild(piggy);
 
-    let description_paragraph = document.createElement("p");
-    description_paragraph.innerHTML = "The Best Carolina Barbecue West of the Outer Banks!"
-    content_container.appendChild(description_paragraph);
+    let first_paragraph = document.createElement("p");
+    first_paragraph.textContent = `The Best Carolina Barbecue West of the Outer 
+        Banks!`
+    content_container.appendChild(first_paragraph);
+
+    let explanation_of_page = document.createElement("p");
+    explanation_of_page.textContent = (
+        `This page - and the three red buttons - are created using only Javascript,
+        except for a small amount of HTML to create the page skeleton. Then, using
+        modules and webpack, clicking the red buttons dynamically generates the chosen
+        pages using JS and 'imports'.`
+    )
+    content_container.appendChild(explanation_of_page);
 
     content_div.appendChild(content_container);
 
