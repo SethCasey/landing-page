@@ -11,6 +11,10 @@ header {
     display: flex;
 }
 
+header>h2 {
+    color: #F9FAF8;
+}
+
 header>img {
     max-width: 10vw;
     max-height: 10vw;

@@ -27,7 +27,7 @@ header {
     margin-right: 20px;
 }
 
-header > img {
+header>img {
     max-width: 10vw;
     max-height: 10vw;
 }
@@ -42,12 +42,12 @@ header > img {
     padding: 10px;
 }
 
-.nav > p {
+.nav>p {
     text-align: center;
     color: #E5E7EB;
 }
 
-.nav > a {
+.nav>a {
     padding: 0;
     margin-left: 5px;
     text-align: left;
@@ -63,14 +63,14 @@ header > img {
     gap: 40px;
 }
 
-.project > p {
+.project>p {
     margin: 10px;
     max-width: 200px;
 }
 
 button.deleteButton {
     position: relative;
-    float:right;
+    float: right;
 }
 
 .project>img,
@@ -84,7 +84,7 @@ button.deleteButton {
     object-fit: cover;
 }
 
-body > footer {
+body>footer {
     position: sticky;
     top: 100vh;
     background-color: #1F2937;
@@ -95,7 +95,7 @@ body > footer {
 
 #formDiv>form {
     display: none;
-    position:fixed;
+    position: fixed;
     left: minmax(150px, 10vw);
     top: 10vh;
     width: 40vw;

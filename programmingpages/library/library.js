@@ -34,7 +34,7 @@ class Book {
         project.classList.add("project");
         project.classList.add(`${this.id}`);
         project.id = this.id;
-        
+
         let deleteButton = document.createElement("button");
         deleteButton.textContent = "x";
         deleteButton.classList.add(this.id);
@@ -83,12 +83,12 @@ class Book {
         project.appendChild(readStatus);
     };
 
-    checkForDuplicate () {
+    checkForDuplicate() {
         let countOfDuplicates = 0;
         for (let x = 0; x < Library.length; x++) {
             let bookComp = Library[x];
-            if (this.id == bookComp.id) {countOfDuplicates++};
-            if (countOfDuplicates == 2) {this.delete();};
+            if (this.id == bookComp.id) { countOfDuplicates++ };
+            if (countOfDuplicates == 2) { this.delete(); };
         };
     };
 };
@@ -112,7 +112,8 @@ bookAdd = (series, bookName, author, genre, pages, readStatus) => {
 const addBookButton = document.getElementById("addBook");
 const formPopUp = document.querySelector("#formPopUp");
 addBookButton.addEventListener("click", () => {
-    formPopUp.style.display = 'grid'});
+    formPopUp.style.display = 'grid'
+});
 const closePopUp = document.querySelector("#closePopUp");
 closePopUp.addEventListener("click", (e) => formPopUp.style.display = "none");
 const submitBook = document.querySelector("#submitBook");
@@ -125,12 +126,13 @@ let pages = document.getElementById("pages");
 let readStatus = document.getElementById("readStatus");
 submitBook.addEventListener("click", (e) => {
     bookAdd(series, bookName, author, genre, pages, readStatus);
-    formPopUp.style.display="none"});
+    formPopUp.style.display = "none"
+});
 
-formPopUp.addEventListener("keydown", function(e) {
+formPopUp.addEventListener("keydown", function (e) {
     if (e.key == 'Enter') {
         bookAdd(series, bookName, author, genre, pages, readStatus)
-        formPopUp.style.display="none"
+        formPopUp.style.display = "none"
     };
 });
 const submitAnotherBook = document.querySelector("#addAnotherBook");
