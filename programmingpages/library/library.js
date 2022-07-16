@@ -109,9 +109,9 @@ bookAdd = (series, bookName, author, genre, pages, readStatus) => {
 };
 
 //popup form
-const addBookButton = document.getElementById("addBook");
+const add_task_button = document.getElementById("addBook");
 const formPopUp = document.querySelector("#formPopUp");
-addBookButton.addEventListener("click", () => {
+add_task_button.addEventListener("click", () => {
     formPopUp.style.display = 'grid'
 });
 const closePopUp = document.querySelector("#closePopUp");

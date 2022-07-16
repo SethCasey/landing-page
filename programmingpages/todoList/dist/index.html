@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./index.bundle.js" defer></script>
+    <script defer src="./index.bundle.js"></script>
     <title>The Definitive ToDo List</title>
 </head>
 
@@ -23,7 +23,7 @@
             <a href="https://github.com">GitHub</a>
         </div>
     </header>
-    <div class="tasks">
+    <div class="tasks" id="tasks">
         <button id="add_task">
             New Task
         </button>
@@ -32,6 +32,7 @@
         </p>
     </div>
     <div id="cards">
+        <div id="modal"></div>
         <div class="project">
             <a href="">
                 <img src="" alt="Alt Description">
