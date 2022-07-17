@@ -10,13 +10,15 @@ let exampleTask = new Task("Testtask", "Description of task", "Aug 1", "0");
 let example_task_with_spaces = new Task("Test Task", "This task has spaces", "Aug 1", "2");
 
 let modal_fields_array = [
-    "Task_Name",
-    "Description_of_Task",
-    "Due_Date",
+    "Task Name",
+    "Description of Task",
+    "Due Date",
     "Priority",
 ];
 
-let popup_modal = new HiddenModalElement("popup_modal", "modal", "add_task");
+let values_of_input_fields = [];
+
+let popup_modal = new HiddenModalElement("popup_modal", "modal", "add_task", values_of_input_fields);
 for (let x = 0; x < modal_fields_array.length; x++) {
     popup_modal.add_input(modal_fields_array[x], "text");
 };
@@ -24,11 +26,16 @@ popup_modal.append_to_parent();
 popup_modal.add_buttons();
 popup_modal.make_hidden();
 
-// For the modal, I need to add the description (labels) for each input.
-// Once the descriptions are added, I also need to make the submit and clear
-// buttons actually empty the inputs... .textContent = ""?
-// Check the "library" example for how I did it there.
 
+
+
+// the function below isn't going to work, since while the values are exported, they
+// can only be exported when the user clicks on the "submit" type of button. So....
+// I need an event listener. Where to put it? And it needs to call the card() function
+// when the button is pressed, to create the card!?
+
+
+// card("cards", "project", ());
 // Now that the modal pops up and disappears with no issues, and the inputs
 // appear as well, its also time to give the modal the ability to create an object using
 // the Task class creator, and append that to the DOM. That should be... called
