@@ -18,23 +18,31 @@ let modal_fields_array = [
 
 let values_of_input_fields = [];
 
-let popup_modal = new HiddenModalElement("popup_modal", "modal", "add_task", values_of_input_fields);
+let popup_modal = new HiddenModalElement("popup_modal", "modal", "add_task");
 for (let x = 0; x < modal_fields_array.length; x++) {
     popup_modal.add_input(modal_fields_array[x], "text");
 };
 popup_modal.append_to_parent();
 popup_modal.add_buttons();
-popup_modal.make_hidden();
+popup_modal.clear_fields_event_listener();
 
+let submit_buttons = [];
+submit_buttons.push(popup_modal.submit_buttons_array);
+for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
+    submit_buttons[0][x].addEventListener("click", (e) => {
+        values_of_input_fields = [];
+        values_of_input_fields.push(popup_modal.return_field_values());
+        console.log(values_of_input_fields);
+    });
+};
+// now I have an event listener (created here) to pull the array of values and store it
+// in values_of_input_fields[0].
 
+// This is erased each time the thingy is called. The values are in the order of
+// fieldname, value_of_field, fieldname, value_of_field etc etc...
 
-
-
-// the function below isn't going to work, since while the values are exported, they
-// can only be exported when the user clicks on the "submit" type of button. So....
-// I need an event listener. Where to put it? And it needs to call the card() function
-// when the button is pressed, to create the card!?
-
+// i can use this unmodified to create cards with custom name fields. I should do this.
+// I can use the order of the array as it is for now.
 
 // card("cards", "project", ());
 // Now that the modal pops up and disappears with no issues, and the inputs
