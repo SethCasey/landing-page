@@ -3,7 +3,6 @@
 export default function card(container_element, card_class, TaskObject) {
     let container = document.getElementById(container_element);
 
-
     let card = document.createElement("div");
     card.setAttribute("class", card_class);
     // Add "priority" as class attr to allow sorting later?

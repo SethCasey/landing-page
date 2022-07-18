@@ -17,6 +17,7 @@ let modal_fields_array = [
 ];
 
 let values_of_input_fields = [];
+let ids_added_to_tasks = [];
 
 let popup_modal = new HiddenModalElement("popup_modal", "modal", "add_task");
 for (let x = 0; x < modal_fields_array.length; x++) {
@@ -24,15 +25,41 @@ for (let x = 0; x < modal_fields_array.length; x++) {
 };
 popup_modal.append_to_parent();
 popup_modal.add_buttons();
-popup_modal.clear_fields_event_listener();
+
+
+// for (let x = 0; x < popup_modal.clear_buttons_array.length; x++) {
+//     popup_modal.clear_buttons_array[x].addEventListener("click", (e) => {
+//         popup_modal.clear_fields();
+//     });
+// };
+
+function card_from_input() {
+    values_of_input_fields = [];
+    values_of_input_fields.push(popup_modal.return_field_values());
+    if (values_of_input_fields[0][0] != "") {
+        if (values_of_input_fields[0][1] != "") {
+            if (values_of_input_fields[0][2] != "") {
+                if (values_of_input_fields[0][3] != "") {
+                    // Need to check if an id is already used for a task. If so, I need
+                    // to prevent the user from adding the task without editing the ID.
+
+                    // Also, this is ugly, so ... Better way to validate user input?
+                    let new_task = new Task(...values_of_input_fields[0]);
+                    card("cards", "project", new_task);
+                };
+            };
+        };
+    };
+    console.log(values_of_input_fields);
+    popup_modal.clear_fields();
+};
+
 
 let submit_buttons = [];
 submit_buttons.push(popup_modal.submit_buttons_array);
 for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
     submit_buttons[0][x].addEventListener("click", (e) => {
-        values_of_input_fields = [];
-        values_of_input_fields.push(popup_modal.return_field_values());
-        console.log(values_of_input_fields);
+        card_from_input();
     });
 };
 // now I have an event listener (created here) to pull the array of values and store it

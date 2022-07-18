@@ -100,16 +100,12 @@ export default class HiddenModalElement {
         return this.submit_buttons_array;
     };
 
-    clear_fields_event_listener() {
-        for (let x = 0; x < this.clear_buttons_array.length; x++) {
-            this.clear_buttons_array[x].addEventListener("click", (e) => {
-                for (let x = 0; x < this.array_of_fields.length; x++) {
-                    if (this.array_of_fields[x].class == "input_field") {
-                        this.array_of_fields[x].value = "";
-                    };
-                }
-            });
-        }
+    clear_fields() {
+        for (let x = 0; x < this.array_of_fields.length; x++) {
+            if (this.array_of_fields[x].class == "input_field") {
+                this.array_of_fields[x].value = "";
+            };
+        };
     };
 
     return_field_values() {
@@ -117,10 +113,18 @@ export default class HiddenModalElement {
         for (let x = 0; x < this.array_of_fields.length; x++) {
             if (this.array_of_fields[x].class == "input_field") {
                 values_of_fields.push(this.array_of_fields[x].value);
-            } else {
-                values_of_fields.push(this.array_of_fields[x].textContent);
-            }
+            };
+            // the below if / else is commented out because I'm not sure that I 
+            // want the labels transferred out into the array. For now, just the values.
+            //     if (this.array_of_fields[x].class == "input_field") {
+            //         values_of_fields.push(this.array_of_fields[x].value);
+            //     } else {
+            //         values_of_fields.push(this.array_of_fields[x].textContent);
+            //     }
+            // };
         };
+
         return values_of_fields;
     };
 };
+
