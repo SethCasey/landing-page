@@ -16,6 +16,7 @@ export default class HiddenModalElement {
         this.parent = document.getElementById(parent_element);
         this.activation_button = document.getElementById(activation_button_id)
         this.array_of_children = [];
+        this.submit_buttons_array = [];
         this.modal = document.createElement("modal");
         this.modal.setAttribute("id", this.id);
 
@@ -72,16 +73,18 @@ export default class HiddenModalElement {
         });
 
         let create_another_button = document.createElement("button");
+        this.submit_buttons_array.push(create_another_button);
         create_another_button.textContent = "Create Another";
         create_another_button.addEventListener("click", (e) => {
             for (let x = 0; x < this.array_of_children.length; x++) {
                 if (this.array_of_children[x].class == "input_field") {
                     this.array_of_children[x].value = "";
                 };
-            }
+            };
         });
 
         let submit_button = document.createElement("button");
+        this.submit_buttons_array.push(submit_button);
         submit_button.textContent = "Submit";
         submit_button.addEventListener("click", (e) => {
             this.parent.style.display = "none";

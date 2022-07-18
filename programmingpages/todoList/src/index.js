@@ -29,6 +29,7 @@ popup_modal.make_hidden();
 
 
 
+
 // the function below isn't going to work, since while the values are exported, they
 // can only be exported when the user clicks on the "submit" type of button. So....
 // I need an event listener. Where to put it? And it needs to call the card() function
