@@ -15,7 +15,8 @@ export default class HiddenModalElement {
         this.id = modal_id;
         this.parent = document.getElementById(parent_element);
         this.activation_button = document.getElementById(activation_button_id)
-        this.array_of_fields = [];
+        this.input_fields_array = [];
+        this.labels_for_inputs_array = [];
         this.submit_buttons_array = [];
         this.clear_buttons_array = [];
         this.modal = document.createElement("modal");
@@ -45,15 +46,16 @@ export default class HiddenModalElement {
         label_for_input.textContent = new_input;
         label_for_input.class = "field_label";
 
-        this.array_of_fields.push(label_for_input);
-        this.array_of_fields.push(input_to_add);
+        this.labels_for_inputs_array.push(label_for_input);
+        this.input_fields_array.push(input_to_add);
         //Do I need to save that id anywhere other than the array?
 
     };
 
     append_to_parent() {
-        for (let x = 0; x < this.array_of_fields.length; x++) {
-            this.parent.appendChild(this.array_of_fields[x]);
+        for (let x = 0; x < this.input_fields_array.length; x++) {
+            this.parent.appendChild(this.labels_for_inputs_array[x]);
+            this.parent.appendChild(this.input_fields_array[x]);
         };
     }
 
@@ -101,18 +103,22 @@ export default class HiddenModalElement {
     };
 
     clear_fields() {
-        for (let x = 0; x < this.array_of_fields.length; x++) {
-            if (this.array_of_fields[x].class == "input_field") {
-                this.array_of_fields[x].value = "";
+        for (let x = 0; x < this.input_fields_array.length; x++) {
+            if (this.input_fields_array[x].class == "input_field") {
+                this.input_fields_array[x].value = "";
             };
         };
     };
 
     return_field_values() {
         let values_of_fields = [];
-        for (let x = 0; x < this.array_of_fields.length; x++) {
-            if (this.array_of_fields[x].class == "input_field") {
-                values_of_fields.push(this.array_of_fields[x].value);
+        for (let x = 0; x < this.input_fields_array.length; x++) {
+            if (this.input_fields_array[x].class == "input_field") {
+                if (this.input_fields_array[x].type == "text") {
+                    values_of_fields.push(this.input_fields_array[x].value);
+                } else if (this.input_fields_array[x].type == "number") {
+                    values_of_fields.push(parseInt(this.input_fields_array[x].value));
+                };
             };
             // the below if / else is commented out because I'm not sure that I 
             // want the labels transferred out into the array. For now, just the values.

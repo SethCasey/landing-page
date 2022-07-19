@@ -16,44 +16,67 @@ let modal_fields_array = [
     "Priority",
 ];
 
-let values_of_input_fields = [];
-let ids_added_to_tasks = [];
+
+let array_of_tasks = [];
+
+array_of_tasks.push(exampleTask);
+array_of_tasks.push(example_task_with_spaces);
 
 let popup_modal = new HiddenModalElement("popup_modal", "modal", "add_task");
-for (let x = 0; x < modal_fields_array.length; x++) {
+for (let x = 0; x < modal_fields_array.length - 1; x++) {
     popup_modal.add_input(modal_fields_array[x], "text");
 };
+popup_modal.add_input(modal_fields_array[3], "number");
 popup_modal.append_to_parent();
 popup_modal.add_buttons();
 
+// Need to return functionality to the Clear Form button with an addEventListener.
 
-// for (let x = 0; x < popup_modal.clear_buttons_array.length; x++) {
-//     popup_modal.clear_buttons_array[x].addEventListener("click", (e) => {
-//         popup_modal.clear_fields();
-//     });
-// };
+// Should these functions be part of index.js, or should I move them out to the
+// cardCreator module? If so, I need to export 2 functions.
+
+// There's a lot of interaction between the functions and Task. Should I make that
+// part of the arguments in card_from_input()? 
+
+// Once the modal is able to create a task (done), automate the creation of a 
+// card (done).
+// Would that be within the Task module? As a method of the Task class?
+// Should I make a method for the Task module to call cardCreator? I don't think so.
+// If anything, it should be in cardCreator. 
+
 
 function card_from_input() {
-    values_of_input_fields = [];
-    values_of_input_fields.push(popup_modal.return_field_values());
-    if (values_of_input_fields[0][0] != "") {
-        if (values_of_input_fields[0][1] != "") {
-            if (values_of_input_fields[0][2] != "") {
-                if (values_of_input_fields[0][3] != "") {
-                    // Need to check if an id is already used for a task. If so, I need
-                    // to prevent the user from adding the task without editing the ID.
-
-                    // Also, this is ugly, so ... Better way to validate user input?
-                    let new_task = new Task(...values_of_input_fields[0]);
-                    card("cards", "project", new_task);
-                };
-            };
+    let values_of_input_fields = [];
+    values_of_input_fields.push(...popup_modal.return_field_values());
+    console.log(values_of_input_fields);
+    for (let x = 0; x < values_of_input_fields.length; x++) {
+        if (values_of_input_fields[x] == "") {
+            alert("Fields can not be empty");
+            return;
         };
     };
-    console.log(values_of_input_fields);
+    if (isNaN(values_of_input_fields[3])) {
+        alert("The priority must be a number");
+        return;
+    }
+    // Checks for duplicate task id, if so, denies user with alert, and exits function
+    // without creating card
+    let lower_and_no_space_input = values_of_input_fields[0].toLowerCase().replace(/\s/g, "");
+    for (let x = 0; x < array_of_tasks.length; x++) {
+        if (array_of_tasks[x].id == lower_and_no_space_input) {
+            alert("There is already a task with this name");
+            return;
+        };
+    };
+    card(
+        "cards",
+        "project",
+        new Task(...values_of_input_fields)
+    );
+    array_of_tasks.push(new Task(...values_of_input_fields))
+    console.log(array_of_tasks);
     popup_modal.clear_fields();
 };
-
 
 let submit_buttons = [];
 submit_buttons.push(popup_modal.submit_buttons_array);
@@ -62,30 +85,6 @@ for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
         card_from_input();
     });
 };
-// now I have an event listener (created here) to pull the array of values and store it
-// in values_of_input_fields[0].
-
-// This is erased each time the thingy is called. The values are in the order of
-// fieldname, value_of_field, fieldname, value_of_field etc etc...
-
-// i can use this unmodified to create cards with custom name fields. I should do this.
-// I can use the order of the array as it is for now.
-
-// card("cards", "project", ());
-// Now that the modal pops up and disappears with no issues, and the inputs
-// appear as well, its also time to give the modal the ability to create an object using
-// the Task class creator, and append that to the DOM. That should be... called
-// by and in the modal module? IDK. Or here?
-
-// Once the modal is able to create a task, automate the creation of a card.
-// Would that be within the Task module? As a method of the Task class?
-
-// Should the modal simply return a list of strings (The information for a Task object),
-// which would then
-// be used by Task? I think so. I would have to refactor Task to accept an array
-// instead of multiple args.
-
-// Then create a card using the Task object! Automate that... how?
 
 
 // invoking a new card with object of class Task, allowing card function
@@ -93,8 +92,6 @@ for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
 card("cards", "project", exampleTask);
 card("cards", "project", example_task_with_spaces);
 
-// create a separate module for the popup form input, to create new tasks from the
-// #add_task button. Use the "library" input form as an example to work from.
 
 // figure out how to use local_storage module to save the added task to user's local
-// storage.
+// storage
