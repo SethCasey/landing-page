@@ -4,11 +4,32 @@ import card from "./cardCreator.js";
 // import { TaskInputFieldCreator, PopupFormButtons } from "./popupForm.js";
 import HiddenModalElement from "./classPopup.js"
 
+// Create separate "projects" or "lists" of ToDos, as well as a default "ToDo". 
+
+// Separate application logic from DOM related stuff. Ie, creating new ToDos,
+// setting ToDos as complete, changing ToDo priority should be separate from DOM
+// related code
+
+// Be able to:
+//      View All Projects
+//      View all ToDos in each project - maybe just title and due date
+//          Perhaps change color for priority level
+//      Expand single todo to see and edit its details
+//      Delete a todo
+
+// Consider using npm package date-fns for formatting and manipulating dates and times
+
+// figure out how to use local_storage module to save the added task to user's local
+// storage
+
+// Manually adding 2 tasks, and creating an array from which to create the fields for
+// this web page's form
 // a manual use of the Task class to create a Task object.
 let exampleTask = new Task("Testtask", "Description of task", "Aug 1", "0");
 
 let example_task_with_spaces = new Task("Test Task", "This task has spaces", "Aug 1", "2");
 
+// Creating array of form fields to use to create popupmodal
 let modal_fields_array = [
     "Task Name",
     "Description of Task",
@@ -16,12 +37,14 @@ let modal_fields_array = [
     "Priority",
 ];
 
-
+// initialize a global array to use for tracking Task objects
 let array_of_tasks = [];
 
 array_of_tasks.push(exampleTask);
 array_of_tasks.push(example_task_with_spaces);
 
+
+// Create popup modal
 let popup_modal = new HiddenModalElement("popup_modal", "modal", "add_task");
 for (let x = 0; x < modal_fields_array.length - 1; x++) {
     popup_modal.add_input(modal_fields_array[x], "text");
@@ -30,21 +53,8 @@ popup_modal.add_input(modal_fields_array[3], "number");
 popup_modal.append_to_parent();
 popup_modal.add_buttons();
 
-// Need to return functionality to the Clear Form button with an addEventListener.
 
-// Should these functions be part of index.js, or should I move them out to the
-// cardCreator module? If so, I need to export 2 functions.
-
-// There's a lot of interaction between the functions and Task. Should I make that
-// part of the arguments in card_from_input()? 
-
-// Once the modal is able to create a task (done), automate the creation of a 
-// card (done).
-// Would that be within the Task module? As a method of the Task class?
-// Should I make a method for the Task module to call cardCreator? I don't think so.
-// If anything, it should be in cardCreator. 
-
-
+// Function to create task then card from input using popupmodal fields
 function card_from_input() {
     let values_of_input_fields = [];
     values_of_input_fields.push(...popup_modal.return_field_values());
@@ -78,6 +88,8 @@ function card_from_input() {
     popup_modal.clear_fields();
 };
 
+
+// Submit buttons event listener to initiate card_from_input() function
 let submit_buttons = [];
 submit_buttons.push(...popup_modal.submit_buttons_array);
 for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
@@ -85,6 +97,8 @@ for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
         card_from_input();
     });
 };
+
+// Adding clear form functionality
 let clear_buttons = [];
 clear_buttons.push(...popup_modal.clear_buttons_array);
 for (let x = 0; x < clear_buttons.length; x++) {
@@ -98,10 +112,3 @@ for (let x = 0; x < clear_buttons.length; x++) {
 // to handle creation and appending of Task to DOM.
 card("cards", "project", exampleTask);
 card("cards", "project", example_task_with_spaces);
-
-
-// if 'value == true' for the card, add strikethrough on font to indicate to user that
-// the task is completed
-
-// figure out how to use local_storage module to save the added task to user's local
-// storage

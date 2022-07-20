@@ -30,9 +30,11 @@ export default function card(container_element, card_class, TaskObject) {
         if (TaskObject.completed == false) {
             checkbox.value = true;
             TaskObject.completed = true;
+            card.style.setProperty("text-decoration", "line-through");
         } else {
             checkbox.value = false;
             TaskObject.completed = false;
+            card.style.setProperty("text-decoration", "none");
         };
     })
     card.appendChild(checkbox);

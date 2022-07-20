@@ -15,6 +15,7 @@ export default class Task {
         this.priority = priority;
         this.completed = completed;
     };
+
     // Validate each attribute to prevent invalid values
     // is that SOP for using classes? Prevent creation of object
     // if input value is invalid?
