@@ -10,7 +10,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game">
+    <header>
+        <img src="../../images/logo.png" alt="My personal logo here">
+            <!---insert stuff here -->
+        <div class="rightLinks">
+            <a href="/index.html">Home</a>
+            <a href="../progprojects.html">Programming</a>
+            <a href="https://www.theodinproject.com">The Odin Project</a>
+            <a href="https://github.com">GitHub</a>
+        </div>
+    </header>
+    <div class="nav">
+        <p>
+            Tool bar
+        </p>
+        <label for="number_of_cells">Number Of Cells</label>
+        <input type="text" name="number_of_cells" id="number_of_cells"></input>
+        <label for="color_picker">Color</label>
+        <input type="color" name="color_picker" id="color_picker">
+        <button id="create_game">Create</button>
     </div>
+    <div class="content">
+        <div class="controls">
+            <button>Reset</button>
+            <button>ColorPicker</button>
+            <button>Boldness</button>
+        </div>
+        <div id="game">
+        </div>
+    </div>
+    <footer>
+        <p>Copyright Seth 2021-2022</p>
+        <p>Unless its Copyright The Odin Project 2021-2022</p>
+    </footer>
 </body>
 </html>

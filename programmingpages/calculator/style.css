@@ -1,4 +1,4 @@
-body {
+#calculator {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,6 +11,7 @@ body {
     text-align: right;
     padding-right: 10px;
     padding-left: 10px;
+    width: calc(69px*4);
 }
 
 .workingSection {
@@ -32,4 +33,95 @@ button {
     width: 64px;
     height: 40px;
     margin: 5px;
+}
+
+/*Overall Page Styling*/
+a {
+    text-decoration: none;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 100px 4fr 1fr;
+    grid-template-columns: minmax(150px, 10vw) 1fr;
+    margin: 0;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    background-color: #1F2937;
+    grid-column: 1 / 3;
+    max-height: 100px;
+}
+
+.rightLinks,
+.rightLinks>a {
+    display: flex;
+    margin-left: auto;
+    gap: 20px;
+    color: #E5E7EB;
+    align-items: center;
+    margin-right: 20px;
+}
+
+header > img {
+    max-width: 10vw;
+    max-height: 10vw;
+}
+
+.nav {
+    grid-column: 1;
+    grid-row: 2 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #1F2937;
+    padding: 10px;
+}
+
+.nav > p {
+    text-align: center;
+    color: #E5E7EB;
+}
+
+.nav > a {
+    padding: 0;
+    margin-left: 5px;
+    text-align: left;
+    color: #E5E7EB;
+}
+
+.cards {
+    margin: 20px;
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.project > p {
+    margin: 10px;
+    max-width: 200px;
+}
+
+.project>img,
+.project>*>img {
+    border: 0.25em;
+    border-color: #3882F6;
+    border-style: solid;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+body > footer {
+    position: sticky;
+    top: 100vh;
+    background-color: #1F2937;
+    color: #F9FAF8;
+    text-align: center;
+    grid-column: 1 / 3;
 }
