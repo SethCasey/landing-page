@@ -79,10 +79,17 @@ function card_from_input() {
 };
 
 let submit_buttons = [];
-submit_buttons.push(popup_modal.submit_buttons_array);
+submit_buttons.push(...popup_modal.submit_buttons_array);
 for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
-    submit_buttons[0][x].addEventListener("click", (e) => {
+    submit_buttons[x].addEventListener("click", (e) => {
         card_from_input();
+    });
+};
+let clear_buttons = [];
+clear_buttons.push(...popup_modal.clear_buttons_array);
+for (let x = 0; x < clear_buttons.length; x++) {
+    clear_buttons[x].addEventListener("click", (e) => {
+        popup_modal.clear_fields();
     });
 };
 
@@ -92,6 +99,9 @@ for (let x = 0; x < popup_modal.submit_buttons_array.length; x++) {
 card("cards", "project", exampleTask);
 card("cards", "project", example_task_with_spaces);
 
+
+// if 'value == true' for the card, add strikethrough on font to indicate to user that
+// the task is completed
 
 // figure out how to use local_storage module to save the added task to user's local
 // storage
