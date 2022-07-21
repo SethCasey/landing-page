@@ -14,6 +14,7 @@ export default class HiddenModalElement {
     constructor(modal_id, parent_element, activation_button_id) {
         this.id = modal_id;
         this.parent = document.getElementById(parent_element);
+        this.create_background();
         this.activation_button = document.getElementById(activation_button_id)
         this.input_fields_array = [];
         this.labels_for_inputs_array = [];
@@ -25,6 +26,7 @@ export default class HiddenModalElement {
         this.activation_button.addEventListener("click", (e) => {
             if (this.parent.style.display == "none") {
                 this.parent.style.display = "grid";
+                this.parent.style.position = "fixed";
             } else {
                 this.parent.style.display = "none";
             };
@@ -54,9 +56,10 @@ export default class HiddenModalElement {
 
     append_to_parent() {
         for (let x = 0; x < this.input_fields_array.length; x++) {
-            this.parent.appendChild(this.labels_for_inputs_array[x]);
-            this.parent.appendChild(this.input_fields_array[x]);
+            this.background.appendChild(this.labels_for_inputs_array[x]);
+            this.background.appendChild(this.input_fields_array[x]);
         };
+        this.parent.appendChild(this.background);
     }
 
     toggle_hidden() {
@@ -76,12 +79,10 @@ export default class HiddenModalElement {
 
         let create_another_button = document.createElement("button");
         this.submit_buttons_array.push(create_another_button);
-        this.clear_buttons_array.push(create_another_button);
         create_another_button.textContent = "Create Another";
 
         let submit_button = document.createElement("button");
         this.submit_buttons_array.push(submit_button);
-        this.clear_buttons_array.push(submit_button);
         submit_button.textContent = "Submit";
         submit_button.addEventListener("click", (e) => {
             this.toggle_hidden();
@@ -89,13 +90,15 @@ export default class HiddenModalElement {
 
         let close_popup_button = document.createElement("button");
         close_popup_button.textContent = "Close";
+        this.clear_buttons_array.push(close_popup_button);
         close_popup_button.addEventListener("click", (e) => {
             this.toggle_hidden();
         });
 
-        this.parent.appendChild(clear_form_button);
-        this.parent.appendChild(submit_button);
-        this.parent.appendChild(create_another_button);
+        this.background.appendChild(clear_form_button);
+        this.background.appendChild(submit_button);
+        this.background.appendChild(create_another_button);
+        //append close_popup button
     };
 
     return_submit_button_objects() {
@@ -132,5 +135,18 @@ export default class HiddenModalElement {
 
         return values_of_fields;
     };
+
+    create_background() {
+        this.background = document.createElement("div")
+        this.background.id = "background";
+        this.background.style.display = "flex";
+        this.background.style.flexDirection = "column";
+        this.background.style.backgroundColor = "white";
+        this.background.style.border = "thick solid rgba(2, 151, 157, 0.7)";
+        this.background.style.padding = "15px";
+        this.background.style.borderRadius = "0.5em";
+        this.backgrou
+        return this.background;
+    }
 };
 
