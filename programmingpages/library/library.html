@@ -44,18 +44,18 @@
             <button id="closePopUp" type="reset">Close</button>
             <h3>Add Book</h3>
             <label for="bookSeries">Book Series:</label>
-            <input type="text" name="bookSeries" id="bookSeries">
+            <input type="text" name="bookSeries" id="bookSeries" required>
             <label for="bookName">Book Name:</label>
-            <input type="text" name="bookName" id="bookName">
+            <input type="text" name="bookName" id="bookName" required>
             <label for="bookAuthor">Book Author:</label>
-            <input type="text" name="bookAuthor" id="bookAuthor">
+            <input type="text" name="bookAuthor" id="bookAuthor" required>
             <label for="bookGenre">Book Genre:</label>
-            <input type="text" name="bookGenre" id="bookGenre">
+            <input type="text" name="bookGenre" id="bookGenre" required>
             <label for="pages">Pages:</label>
-            <input type="number" name="pages" id="pages">
+            <input type="number" name="pages" id="pages" required>
             <label for="readStatus">Read:</label>
-            <input type="checkbox" name="readStatus" id="readStatus" value="read">
-            <input type="hidden" name="readStatus" value="unread">
+            <input type="checkbox" name="readStatus" id="readStatus" value="unread">
+            <!-- <input type="hidden" name="readStatus" value="unread"> -->
             <button id="clearForm" type="reset">Clear Form</button>
             <button id="submitBook" type="button">Add Book to Library</button>
             <button id="addAnotherBook" type="button">Add Another Book</button>
