@@ -2,9 +2,10 @@ body {
     background-color: lightskyblue;
 }
 
-.content {
+#content {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
 }
 
 .controls {
@@ -18,9 +19,8 @@ body {
     justify-self: center;
 }
 
-.game {
-    display: flex;
-    /* flex-shrink: 1; */
+#game {
+    display: grid;
 }
 
 .square {
@@ -119,3 +119,17 @@ body > footer {
     text-align: center;
     grid-column: 1 / 3;
 }
+
+.changed {
+    background-color: black;
+}
+
+.nav>* {
+    color:#E5E7EB;
+}
+
+.nav>button {
+    background-color:#3882F6;
+}
+
+

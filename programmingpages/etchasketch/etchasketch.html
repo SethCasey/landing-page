@@ -25,19 +25,18 @@
             Tool bar
         </p>
         <label for="number_of_cells">Number Of Cells</label>
-        <input type="text" name="number_of_cells" id="number_of_cells"></input>
-        <label for="color_picker">Color</label>
+        <div>Warning: Higher values will take some time to load</div>
+        <input type="range" name="number_of_cells" id="number_of_cells"
+        min="0" max="250" ></input>
+        <div id="number_of_cells_value">125</div>
+        <label for="color_picker">Color of Marker</label>
         <input type="color" name="color_picker" id="color_picker">
+        <label for="background-color">Background Color</label>
+        <input type="color" name="background-color" id="background-color">
         <button id="create_game">Create</button>
+        <!-- <button id="boldness_of_line">Boldness</button> -->
     </div>
-    <div class="content">
-        <div class="controls">
-            <button>Reset</button>
-            <button>ColorPicker</button>
-            <button>Boldness</button>
-        </div>
-        <div id="game">
-        </div>
+    <div id="content">
     </div>
     <footer>
         <p>Copyright Seth 2021-2022</p>
