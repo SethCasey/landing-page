@@ -66,16 +66,22 @@ class Book {
         readStatus.classList.add("readButton", this.status, this.id);
         if (this.status) { //if the book is "true" for status
             readStatus.innerHTML = "Read";
+            project.classList.add("read");
         } else {
             readStatus.innerHTML = "Unread";
+            project.classList.add("unread");
         };
         readStatus.addEventListener("click", (e) => {
             readStatus.classList.remove(this.status);
             if (this.status) {
+                project.classList.remove("read");
+                project.classList.add("unread");
                 this.status = false;
                 readStatus.innerHTML = ("Unread");
             } else {
                 this.status = true;
+                project.classList.remove("unread");
+                project.classList.add("read");
                 readStatus.innerHTML = "Read";
             };
             readStatus.classList.add(this.status);
@@ -154,8 +160,6 @@ add_task_button.addEventListener("click", () => {
 const closePopUp = document.querySelector("#closePopUp");
 closePopUp.addEventListener("click", (e) => {
     formPopUp.style.display = "none";
-//     // alert("All fields must be filled out");
-// }> 
 });
 const submitBook = document.querySelector("#submitBook");
 //form fields
@@ -177,21 +181,23 @@ submitBook.addEventListener("click", (e) => {
     }
 });
 
-formPopUp.addEventListener("keydown", function (e) {
-    if (e.key == 'Enter') {
-        if (check_field_value(input_fields)) {
-            bookAdd(series, bookName, author, genre, pages, readStatus);
-            formPopUp.style.display = "none"
-        } else {
-            alert("All fields must be filled out correctly");
-        }
-    };
-});
+// formPopUp.addEventListener("keydown", function (e) {
+//     if (e.key == 'Enter') {
+//         if (check_field_value(input_fields)) {
+//             bookAdd(series, bookName, author, genre, pages, readStatus);
+//             formPopUp.style.display = "none"
+//         } else {
+//             alert("All fields must be filled out correctly");
+//         }
+//     } else {
+//         return;
+//     }
+// });
+
 const submitAnotherBook = document.querySelector("#addAnotherBook");
 submitAnotherBook.addEventListener("click", () => {
     if (check_field_value(input_fields)) {
         bookAdd(series, bookName, author, genre, pages, readStatus);
-        formPopUp.style.display = "none"
     } else {
         alert("All fields must be filled out correctly");
     }

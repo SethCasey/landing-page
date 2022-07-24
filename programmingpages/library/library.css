@@ -63,6 +63,14 @@ header>img {
     gap: 40px;
 }
 
+.project {
+    padding: 5px;
+}
+
+.project>button{
+    border-radius: 0.25em;
+}
+
 .project>p {
     margin: 10px;
     max-width: 200px;
@@ -140,7 +148,13 @@ body>footer {
 .readButton.false {
     background-color: rgb(255, 96, 96);
 }
-/* 
-input:invalid {
-    box-shadow: 0 0 5px 1px red;
-} */
+
+.unread {
+    border: 0.25em solid rgb(255, 96, 96);
+    border-radius: 1em;
+}
+
+.read {
+    border: 0.25em solid rgb(47, 165, 47);
+    border-radius: 1em;
+}
