@@ -133,14 +133,14 @@ body>footer {
     justify-self: right;
 }
 
-button.readButton.unread {
-    background-color: green;
+.readButton.true {
+    background-color: rgb(47, 165, 47);
 }
 
-button.readButton.read {
-    background-color: red;
+.readButton.false {
+    background-color: rgb(255, 96, 96);
 }
-
+/* 
 input:invalid {
     box-shadow: 0 0 5px 1px red;
-  }
+} */

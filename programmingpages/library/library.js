@@ -108,6 +108,43 @@ bookAdd = (series, bookName, author, genre, pages, readStatus) => {
     readStatus.value = "";
 };
 
+check_field_value = (array_of_fields) => {
+    for (let x=0; x<array_of_fields.length; x++) {
+        if (array_of_fields[x].value) {
+            continue;
+        } else {
+            return 0;
+        }
+    };
+    return 1;
+};
+
+check_valid_values = (input) => {
+    for (let x=0; x<input_fields.length; x++) {
+        if (input.type == "text" && !input.value.length) {
+            input.style.setProperty("box-shadow", "0 0 5px 1px red");
+            input.setCustomValidity("This field must be filled out");
+            input.reportValidity();
+        } else if (input.id == "pages" && !input.value) {
+            input.style.setProperty("box-shadow", "0 0 5px 1px red");
+            input.setCustomValidity("This must be a numerical value");
+            input.reportValidity();
+        } else {
+            input.style.setProperty("box-shadow", "none");
+            continue;
+        }
+    }
+}
+
+add_input_validation = (input_fields) => {
+    for(let x = 0; x < input_fields.length; x++) {
+        input_fields[x].addEventListener("blur", function (event) {
+            check_valid_values(input_fields[x]);
+          });
+    }
+}
+
+
 //popup form
 const add_task_button = document.getElementById("addBook");
 const formPopUp = document.querySelector("#formPopUp");
@@ -115,7 +152,11 @@ add_task_button.addEventListener("click", () => {
     formPopUp.style.display = 'grid'
 });
 const closePopUp = document.querySelector("#closePopUp");
-closePopUp.addEventListener("click", (e) => formPopUp.style.display = "none");
+closePopUp.addEventListener("click", (e) => {
+    formPopUp.style.display = "none";
+//     // alert("All fields must be filled out");
+// }> 
+});
 const submitBook = document.querySelector("#submitBook");
 //form fields
 let series = document.getElementById("bookSeries");
@@ -124,18 +165,34 @@ let author = document.getElementById("bookAuthor");
 let genre = document.getElementById("bookGenre");
 let pages = document.getElementById("pages");
 let readStatus = document.getElementById("readStatus");
+let input_fields = [];
+input_fields.push(series, bookName, author, genre, pages);
+add_input_validation(input_fields);
 submitBook.addEventListener("click", (e) => {
-    bookAdd(series, bookName, author, genre, pages, readStatus);
-    formPopUp.style.display = "none"
+    if (check_field_value(input_fields)) {
+        bookAdd(series, bookName, author, genre, pages, readStatus);
+        formPopUp.style.display = "none"
+    } else {
+        alert("All fields must be filled out correctly");
+    }
 });
 
 formPopUp.addEventListener("keydown", function (e) {
     if (e.key == 'Enter') {
-        bookAdd(series, bookName, author, genre, pages, readStatus)
-        formPopUp.style.display = "none"
+        if (check_field_value(input_fields)) {
+            bookAdd(series, bookName, author, genre, pages, readStatus);
+            formPopUp.style.display = "none"
+        } else {
+            alert("All fields must be filled out correctly");
+        }
     };
 });
 const submitAnotherBook = document.querySelector("#addAnotherBook");
 submitAnotherBook.addEventListener("click", () => {
-    bookAdd(series, bookName, author, genre, pages, readStatus);
+    if (check_field_value(input_fields)) {
+        bookAdd(series, bookName, author, genre, pages, readStatus);
+        formPopUp.style.display = "none"
+    } else {
+        alert("All fields must be filled out correctly");
+    }
 });

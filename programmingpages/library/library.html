@@ -41,18 +41,18 @@
     </div>
     <div id="formDiv">
         <form id="formPopUp" action="put">
-            <button id="closePopUp" type="reset">Close</button>
+            <button id="closePopUp" type="button">Close</button>
             <h3>Add Book</h3>
             <label for="bookSeries">Book Series:</label>
-            <input type="text" name="bookSeries" id="bookSeries" required>
+            <input type="text" name="bookSeries" id="bookSeries" minlength="1" required>
             <label for="bookName">Book Name:</label>
-            <input type="text" name="bookName" id="bookName" required>
+            <input type="text" name="bookName" id="bookName" minlength="1" required>
             <label for="bookAuthor">Book Author:</label>
-            <input type="text" name="bookAuthor" id="bookAuthor" required>
+            <input type="text" name="bookAuthor" id="bookAuthor" minlength="1" required>
             <label for="bookGenre">Book Genre:</label>
-            <input type="text" name="bookGenre" id="bookGenre" required>
+            <input type="text" name="bookGenre" id="bookGenre" minlength="1" required>
             <label for="pages">Pages:</label>
-            <input type="number" name="pages" id="pages" required>
+            <input type="number" name="pages" id="pages" pattern="[0-9]{1,15}" minlength="1" required>
             <label for="readStatus">Read:</label>
             <input type="checkbox" name="readStatus" id="readStatus" value="unread">
             <!-- <input type="hidden" name="readStatus" value="unread"> -->
