@@ -157,17 +157,17 @@ check_valid_values = (input) => {
         } else {
             input.style.setProperty("box-shadow", "none");
             continue;
-        }
-    }
-}
+        };
+    };
+};
 
 add_input_validation = (input_fields) => {
     for(let x = 0; x < input_fields.length; x++) {
         input_fields[x].addEventListener("blur", function (event) {
             check_valid_values(input_fields[x]);
           });
-    }
-}
+    };
+};
 
 
 //form fields
