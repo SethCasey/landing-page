@@ -59,7 +59,7 @@ header>img {
     display: grid;
     grid-column: 2;
     grid-template-columns: repeat(auto-fit, 200px);
-    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, 300px);
     gap: 40px;
 }
 
