@@ -65,6 +65,7 @@ header {
     display: flex;
     font-size: 24px;
     color: #F9FAF8;
+    padding: 20px;
 }
 
 .right-links {
@@ -84,7 +85,7 @@ a {
 .introduction {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    margin: none;
     background-color: #1F2937;
     min-width: 100%;
 }

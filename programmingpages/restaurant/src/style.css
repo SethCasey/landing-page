@@ -2,17 +2,18 @@ body {
     margin: 0;
 }
 
-header.programming_links {
+header {
     background-color: #1F2937;
     padding: 20px;
+    align-items: center;
 }
 
 header {
     display: flex;
 }
 
-header>h2 {
-    color: #F9FAF8;
+h2 {
+    text-align: center;
 }
 
 header>img {
