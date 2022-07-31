@@ -86,46 +86,19 @@ header {
     font-size: 5em;
 }
 
-#slideshow {
-    align-self: center;
-    display: flex;
-    margin: 0;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-    overflow: hidden; 
-    /* I've tweaked the settings of view width between
-    #slideshow, #slideshow>*>img, and #slideshow>* in
-    order to get them to display right. I'm still not
-    happy with how it looks, but I'll have to work on
-    an alternative */
-    width: 800px;
-    height: 700px;
-}
-
 .content>#slideshow {
     grid-column: 2;
     grid-row: 2;
 }
 
 #slideshow>*>img {
-    max-width: 800px;
-    max-height: 400px;
-}
-
-#slideshow>*>p {
-    width: 800px;
-
+    max-width: 50vw;
+    max-height: 50vh;
 }
 
 #slideshow>* {
     text-align: center;
     text-justify: center;
-    display: block;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width: 800px;
-    height: 700px;
 }
 
 #slideshow_navigation {
