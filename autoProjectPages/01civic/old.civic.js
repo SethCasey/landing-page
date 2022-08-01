@@ -27,8 +27,8 @@ const create_navigation = (array_of_children) => {
         nav_indicator.setAttribute("id", `nav`+`${x}`);
         navigation_event_listener(nav_indicator, x);
         array_of_nav_indicators.push(nav_indicator);
-        slideshow_navigation.appendChild(nav_indicator);
-        slideshow_navigation.style.gap = `calc(20vw/${array_of_children.length})`;
+        slideshowNavigation.appendChild(nav_indicator);
+        slideshowNavigation.style.gap = `calc(20vw/${array_of_children.length})`;
     };
 };
 
