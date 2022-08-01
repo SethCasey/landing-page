@@ -26,7 +26,7 @@ html, body {
     margin: 10px;
     font-size: xx-large;
     border-radius: 0.1em;
-    padding: auto;
+    text-align: center;
 }
 
 .navBar {
