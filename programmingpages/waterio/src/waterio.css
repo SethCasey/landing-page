@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+}
+
+.header {
+    background-color: aquamarine;
+    padding: 10px;
+    text-align: center;
+}
+
+.fab {
+    position: Absolute;
+    right: 30px;
+    bottom: 80px;
+    width: 56px;
+    height: 56px;
+    border-radius: 0.5em;
+    font-size: xx-large;
+}
+
+.navButton {
+    background-color: aquamarine;
+    font-size: xx-large;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    font-size: xx-large;
+    border-radius: 0.1em;
+    padding: auto;
+}
+
+.navBar {
+    position: Absolute;
+    bottom: 0px;
+    width: 100vw;
+    height: 60px;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+}
