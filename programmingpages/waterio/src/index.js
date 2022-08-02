@@ -6,5 +6,7 @@ import NavBar from './NavBar';
 new Fab(document.body);
 
 new NavBar(document.body);
-//  Use the following to append to page
- document.body.appendChild(buildHomePage());
+
+
+let homePage = buildHomePage();
+document.body.appendChild(homePage);

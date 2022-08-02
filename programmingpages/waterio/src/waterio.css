@@ -1,5 +1,6 @@
 html, body {
     margin: 0;
+    background: url(./images/wateredplant.jpg);
 }
 
 .header {
@@ -9,7 +10,7 @@ html, body {
 }
 
 .fab {
-    position: Absolute;
+    position: absolute;
     right: 30px;
     bottom: 80px;
     width: 56px;
@@ -37,4 +38,18 @@ html, body {
     background-color: black;
     display: flex;
     justify-content: space-around;
+}
+
+.fabmenu.hidden {
+    display: none;
+}
+
+.fabmenu.shown {
+    display: grid;
+    height: 50vh;
+    width: 80vw;
+    bottom: 140px;
+    right: 20px;
+    margin-left: auto;
+    position: absolute;
 }

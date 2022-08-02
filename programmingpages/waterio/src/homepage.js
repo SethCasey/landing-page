@@ -5,9 +5,8 @@ export default function buildHomePage() {
     header.classList.add("header");
 
     const title = document.createElement("h2")
-    title.textContent = ("Waterio");
+    title.textContent = ("Water.io");
 
-    // new Fab(content);
 
     content.appendChild(header);
     header.appendChild(title);
