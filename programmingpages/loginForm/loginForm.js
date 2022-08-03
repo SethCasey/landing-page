@@ -1,25 +1,27 @@
-const INPUT_IDS = [email, country, zip, password, password_confirmation];
-let input_elements = [];
+import FormElement from "./formElement.js";
 
-class FormElement {
-    constructor(element_id) {
-        this.id = element_id;
-        this.element = document.getElementById(element_id);
-    }
-
-    add_email_validation() {
-        this.type = email;
-        this.element.type = "email";
-        this.element.addEventListener("change", (e) => {
-            if (this.element.validity.valid) {
-                this.element.style.boxShadow = "none";
-            } else {
-                this.element.style.boxShadow = "0px 0px 5px 5px red";
-            }
-        })
-    }
-}
+// const INPUT_IDS = [email, country, zip, password, password_confirmation];
+const input_elements = [];
 
 let email_input = new FormElement("email");
 console.log(email_input);
-email_input.add_email_validation();
+email_input.isEmailInput();
+
+let countryInput = new FormElement("country");
+countryInput.isCountryInput();
+
+let zipInput = new FormElement("zip");
+zipInput.isZipCode();
+
+let password = new FormElement("password");
+password.isPassword();
+
+let password_confirmation = new FormElement("password_confirmation");
+password_confirmation.isPassword();
+password_confirmation.checkPasswordEvent(password, password_confirmation);
+
+input_elements.push(email_input, countryInput, zipInput, password, password_confirmation);
+
+let submitButton = new FormElement("submit");
+submitButton.isSubmitButton();
+submitButton.submitButtonValidation(input_elements);

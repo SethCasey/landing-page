@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Validation</title>
-    <script src="./loginForm.js" defer></script>
+    <script src="./loginForm.js" type="module"></script>
     <style>
         body {
             display: flex;
@@ -21,15 +21,16 @@
 </head>
 <body>
     <label for="email">Email:</label>
-    <input id="email" type="email">
+    <input id="email">
     <label for="country">Country:</label>
-    <input id="country" type="text">
+    <select id="country">
+    </select>
     <label for="zip">Zip Code:</label>
-    <input id="zip" type="text">
-    <label for="password">Password:</label>
-    <input id="password" type="password">
+    <input id="zip">
+    <label for="password">Password: (10 character minimum)</label>
+    <input id="password">
     <label for="password_confirmation">Confirm Password:</label>
-    <input id="password_confirmation" type="password">
+    <input id="password_confirmation" >
     <button id="submit">Submit</button>
 </body>
 </html>
