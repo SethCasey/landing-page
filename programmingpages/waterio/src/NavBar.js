@@ -1,3 +1,5 @@
+import Weather from "./Weather.js";
+
 export default class NavBar {
     constructor(
         parentElement, 
@@ -11,6 +13,10 @@ export default class NavBar {
 
         this.weatherButton = document.createElement("button");
         this.weatherButton.textContent = weatherIcon;
+        const WeatherPage = new Weather(parentElement);
+        this.weatherButton.addEventListener("click", (e) => {
+            WeatherPage.clicked();
+        })
         this.weatherButton.id = "weatherButton";
         
         this.homeButton = document.createElement("button");
@@ -38,5 +44,11 @@ export default class NavBar {
         this.weatherButton.classList.add("navButton");
         this.homeButton.classList.add("navButton");
         this.hamburgerButton.classList.add("navButton");
+    };
+
+    addListener(button, action) {
+        button.addEventListener("click", (e) => {
+            action;
+        });
     };
 };
