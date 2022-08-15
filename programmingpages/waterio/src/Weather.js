@@ -48,6 +48,18 @@ export default class Weather {
 
     getWeather(zip) {
         // use fetch API to get the weather report and put it on the page.
+
+        let parentObject = this;
+        // practicing with cat gif!
+        let key = "";
+        fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=cats`, {mode: 'cors'})
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
+            let data = (response.data.images.original.url);
+            parentObject.addWeatherReport(data);
+        });
     }
 
 
