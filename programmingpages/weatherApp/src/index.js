@@ -77,7 +77,8 @@ async function getWeather(zip, key) {
 
     let gifDiv = document.getElementById("gifDiv");
     let img = document.createElement("img");
-    img.src = getGif(newForecast.description[0].replace(/\s/g, ""));
+    // img.src = await getGif(newForecast.description[0].toString().replace(/\s/g, "")).data.images.original.url;
+    img.src = await getGif("cat").data.images.original.url;
 };
 
 
