@@ -4,7 +4,8 @@ import getGif from "./getGif";
 const content = document.getElementById("forecast");
 const zipInput = document.getElementById("zipCode");
 const keyInput = document.getElementById("apiKey");
-const weatherButton = document.getElementById("getWeatherButton")
+const weatherButton = document.getElementById("getWeatherButton");
+const gifDiv = document.getElementById("gifDiv");
 
 let time = [];
 let description = [];
@@ -75,10 +76,13 @@ async function getWeather(zip, key) {
         content.appendChild(currentElement);
     };
 
-    let gifDiv = document.getElementById("gifDiv");
     let img = document.createElement("img");
     // img.src = await getGif(newForecast.description[0].toString().replace(/\s/g, "")).data.images.original.url;
-    img.src = await getGif("cat").data.images.original.url;
+    let linkToGif = await getGif(newForecast.description[0].toString().replace(/\s/g, ""));
+    console.log(linkToGif);
+    img.src = await linkToGif.data.url;
+    gifDiv.appendChild(img);
+    
 };
 
 
