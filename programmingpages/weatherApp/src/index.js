@@ -3,7 +3,8 @@ import getGif from "./getGif";
 
 const content = document.getElementById("forecast");
 const zipInput = document.getElementById("zipCode");
-const keyInput = document.getElementById("apiKey");
+const weatherKeyInput = document.getElementById("apiKey");
+const giphyInput = document.getElementById("giphyKey");
 const weatherButton = document.getElementById("getWeatherButton");
 const gifDiv = document.getElementById("gifDiv");
 
@@ -20,7 +21,7 @@ function createAndAppendChild(parent, text) {
 };
 
 
-async function getWeather(zip, key) {
+async function getWeather(zip, openWeatherKey, giphyKey) {
 
     if (document.getElementById("title")) {
         for (let i = time.length; i >= 0; i--) { 
@@ -46,7 +47,7 @@ async function getWeather(zip, key) {
         tempFeels = [];
     };
 
-    let newForecast = new Forecast(zip, key);
+    let newForecast = new Forecast(zip, openWeatherKey);
 
     await newForecast.weatherResult();
     let titleDiv = document.createElement("div");
@@ -78,7 +79,7 @@ async function getWeather(zip, key) {
 
     let img = document.createElement("img");
     // img.src = await getGif(newForecast.description[0].toString().replace(/\s/g, "")).data.images.original.url;
-    let linkToGif = await getGif(newForecast.description[0].toString().replace(/\s/g, ""));
+    let linkToGif = await getGif(newForecast.description[0].toString().replace(/\s/g, ""), giphyKey);
     console.log(linkToGif);
     img.src = await linkToGif.data.url;
     gifDiv.appendChild(img);
@@ -89,7 +90,8 @@ async function getWeather(zip, key) {
 weatherButton.addEventListener("click", (e) => {
     let zipValue = zipInput.value;
     console.log(zipValue);
-    let keyValue = keyInput.value;
+    let keyValue = weatherKeyInput.value;
     console.log(keyValue);
-    getWeather(zipValue, keyValue);
+    let giphyKey = giphyInput.value;
+    getWeather(zipValue, keyValue, giphyKey);
 })

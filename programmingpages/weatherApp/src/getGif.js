@@ -1,7 +1,14 @@
-export default async function getGif(searchTerm) {
-    let apiKey = await fetch("./giphysecrets.txt")
-    let textFromKey = apiKey.text()
-    let key = (await textFromKey).toString();
+export default async function getGif(searchTerm, giphyKey) {
+    let apiKey;
+    let textFromKey;
+    let key;
+    if (giphyKey) {
+        key = giphyKey;
+    } else {
+        apiKey = await fetch("./giphysecrets.txt");
+        textFromKey = apiKey.text();
+        key = textFromKey.toString();
+    };
     
 
     let result = await fetch (`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${searchTerm}`, {mode: "cors"})
