@@ -30,6 +30,8 @@ async function getWeather(zip, openWeatherKey, giphyKey) {
                 console.log(`Deleted forecast${i}`);
 
                 delete document.getElementById(`forecast${i}`);
+                // maybe use array.pop here?
+
                 delete time[i];
                 delete description[i];
                 delete tempFeels[i];
