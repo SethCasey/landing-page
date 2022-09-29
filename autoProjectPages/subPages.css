@@ -16,6 +16,11 @@ header {
     max-height: 100px;
 }
 
+header > img {
+    max-width: 10vw;
+    max-height: 10vw;
+}
+
 .rightLinks,
 .rightLinks>a {
     display: flex;
