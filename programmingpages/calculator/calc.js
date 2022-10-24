@@ -1,3 +1,13 @@
+/* TODO: Simplify the code behind this program
+ * Current idea - each button pushes its contents to a queue when it
+ * is pressed... Number, operation, whatever
+ * When enter is pressed, begin clearing queue, popping elements as it runs
+ * When queue is empty, display result
+ * While entering stuff, simply display the queue on the screen
+ * Save the result of an operation as the only element in the queue once
+ * operations are done to be displayed on the calculator screen
+ */
+
 const add = (a, b) => {
     return (a + b);
 };
@@ -14,15 +24,13 @@ const divide = (a, b) => {
     return (a / b);
 };
 
-const operate = (doStuff, a, b) => {
-    let result = doStuff(a, b);
-    return result;
-};
+const operate = (inpFunc, a, b) => return inpFunc(a, b);
 
 let lastNumber = null;
 let nextNumber = null;
 let selectedNumber = null;
 let currentSelection;
+let queuedOperations = [];
 const chosenOperation = [];
 let numberButtons = (document.querySelectorAll(".numberButton"))
 let addButton = document.querySelector("#addButton");
@@ -38,7 +46,8 @@ let posNeg = document.querySelector("#posNeg")
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
-    currentSelection = button.getAttribute("value");
+    //currentSelection = button.getAttribute("value");
+    queuedOperations.push(button.getAttribute("value");
     })
 });
 
