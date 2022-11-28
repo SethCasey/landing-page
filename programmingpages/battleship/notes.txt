@@ -1,0 +1,15 @@
+battleship project for TOP
+
+working on receiveAttack function - need to iterate through ships - iterating through 
+all x dimensions - then iterating through y dimensions - to determine if the “attack” 
+coordinates match up with any coordinates on the ship. If so, add “hit” to ship, and 
+return true. else return false
+
+have to think about hitting the same spot twice - this should not count, but as of right
+ now it will. store coordinates of previous “hits”, and intercept that at the beginning 
+ of receive attack to prevent future hits?
+
+create array to hold all previous “hits”
+
+or array to hold ALL shots. just intercept any prevoiusly-made shot and say “its been 
+done already, choose another?”
