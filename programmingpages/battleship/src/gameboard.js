@@ -22,16 +22,18 @@ export class Gameboard {
       return false;
     }
     for (let i = 0; i < this.ships.length; i++) {
-      let yExists = false;
       let xExists = false;
-      for (let j = this.ships[i].hitbox.start[0]; j < this.ships[i].hitbox.end[0]; j++) {
+      let yExists = false;
+      for (let j = this.ships[i].hitbox.start[0]; j <= this.ships[i].hitbox.end[0]; j++) {
         if (x == j) {
           xExists = true;
+          break
         }
       }
-      for (let k = this.ships[i].hitbox.start[1]; k < this.ships[i].hitbox.end[1]; j++) {
+      for (let k = this.ships[i].hitbox.start[1]; k <= this.ships[i].hitbox.end[1]; k++) {
         if (y == k) {
           yExists = true;
+          break
         }
       }
       if (xExists && yExists) {
