@@ -1,7 +1,7 @@
 import { Ship } from "./shipMaker.js"
 
 export class Gameboard {
-  constructor(dimensions = [0,0]) {
+  constructor(dimensions = [9,9]) { // default dimensions are 10x10
     if (dimensions[0] < 0 || dimensions[1] < 0) {
       return
     }
