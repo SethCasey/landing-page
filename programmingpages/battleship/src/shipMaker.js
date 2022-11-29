@@ -25,7 +25,7 @@ export class Ship {
   }
 
   sunk() {
-    if (this.hitsTaken > this.length) {
+    if (this.hitsTaken >= this.length) {
       return true
     }
     return false

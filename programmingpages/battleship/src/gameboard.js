@@ -8,6 +8,8 @@ export class Gameboard {
     this.dimensions = dimensions;
     this.ships = [];
     this.prevHits = [];
+    this.prevMisses = [];
+    this.shipsSunk = 0;
   }
 
   addShip(length, positionX, positionY, direction) {
@@ -17,9 +19,12 @@ export class Gameboard {
     }
   }
 
-  receiveAttack([x,y]) { 
-    if (this.prevHits.includes([x,y])) {
-      return false;
+  receiveAttack([x,y]) {
+    // in receiveAttack, any previous hits are recorded as a string in the form of x,y.
+    // This is because apparently array.prototype.includes() doesn't quite work when
+    // searching for arrays within arrays
+    if (this.prevHits.includes(`${x},${y}`)) { 
+      return false
     }
     for (let i = 0; i < this.ships.length; i++) {
       let xExists = false;
@@ -37,11 +42,27 @@ export class Gameboard {
         }
       }
       if (xExists && yExists) {
-        this.prevHits.push([x,y]);
+        this.prevHits.push(`${x},${y}`);
+        this.ships[i].hit();
         return true;
       }
+      this.prevMisses.push(`${x},${y}`);
       return false;
     }
+  }
+
+  allShipsSunk() {
+    for (let i = 0; i < this.ships.length; i++) {
+      if (this.ships[i].sunk()) {
+        this.shipsSunk++;
+      }
+    }
+    if (this.shipsSunk >= this.ships.length - 1){
+      return true;
+    }
+    return false;
+  }
+}
 
     // strike([x,y]) {
     //       let yExists = false;
@@ -63,8 +84,8 @@ export class Gameboard {
     //       }
     //     },
 
-  }
-}
+ 
+
 
 //   // Create Gameboard factory.
 

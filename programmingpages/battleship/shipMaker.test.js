@@ -1,3 +1,4 @@
+import { Gameboard } from "./src/gameboard.js";
 import { Ship } from "./src/shipMaker.js"
 
 test("Ship of less than 1 length fails to create", () => {
@@ -32,7 +33,7 @@ test("shipname.hit() returns true and increments hitsTaken", () => {
 
 test("sunk method returns false when hitsTaken < length, true when hitsTaken >= length", () => {
   let firstship = new Ship(3, 0, 0, 0);
-  for (let i = 0; i < firstship.length; i++) {
+  for (let i = 0; i < firstship.length - 1; i++) {
     firstship.hit()
   }
   expect(firstship.sunk()).toBe(false);

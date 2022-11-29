@@ -34,13 +34,41 @@ test("Testing vertical orientation", () => {
 test("receiveAttack method properly registers hits", () => {
   let newboard = new Gameboard([5,5]);
   newboard.addShip(4,0,0,1);
-  // add in a for-loop here to loop through all possible values
-  // then after the for loop, check plus one?
-  // make sure variable has the scope to increment +1 after the loop
-  // or just make sure last loop has false expected value
-  expect(newboard.receiveAttack([0,0])).toEqual(true);
-  expect(newboard.receiveAttack([0,1])).toEqual(true);
+  for (let i = 0; i < newboard.ships[0].length; i++) {
+    expect(newboard.receiveAttack([0, i])).toEqual(true);
+  }
+  expect(newboard.receiveAttack([0, 4])).toEqual(false);
   expect(newboard.receiveAttack([1,0])).toEqual(false);
-  expect(newboard.receiveAttack([0,3])).toEqual(true);
-  expect(newboard.receiveAttack([0,4])).toEqual(false);
+})
+
+test("receiveAttack method rejects duplicate hits", () => {
+  let newboard = new Gameboard([5,5]);
+  newboard.addShip(1,0,0,0);
+  expect(newboard.receiveAttack([0,0])).toEqual(true);
+  expect(newboard.receiveAttack([0,0])).toEqual(false);
+})
+
+test("receiveAttack method records previous misses", () => {
+  let newboard = new Gameboard([5,5]);
+  newboard.addShip(1,4,4,0);
+  expect(newboard.receiveAttack([0,0])).toEqual(false);
+  expect(newboard.prevMisses.length > 0).toEqual(true);
+})
+
+test("When all ships report sunk, (or no ships exist), allShipsSunk() reports true", () => {
+  let newgame = new Gameboard([5,5]);
+  for (let i = 0; i < newgame.ships.length; i++) {
+    expect(newgame.allShipsSunk()).toEqual(true);
+  }
+  newgame.addShip(2,0,1,1);
+  newgame.addShip(3,0,0,0);
+  let firstShipShots = [[0,1], [0,2]];
+  let secondShipShots = [[0,0],[1,0],[2,0]];
+  for (let x = 0; x < firstShipShots.length; x++) {
+    newgame.receiveAttack(firstShipShots[x]);
+  }
+  for (let x = 0; x < secondShipShots.length; x++) {
+    newgame.receiveAttack(secondShipShots[x]);
+  }
+  expect(newgame.allShipsSunk()).toEqual(true);
 })
