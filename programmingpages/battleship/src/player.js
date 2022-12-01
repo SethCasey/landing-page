@@ -6,24 +6,12 @@ import {Ship} from "./shipMaker.js"
 // "players" object to enable automagic incrementing? default as computer?
 
 export class Player { 
-  constructor(playername = "Player") {
+  constructor(playername = "Player", board) {
     this.playername = playername;
-    this.ships = [];
-  // tie a set of ships to a player
-    // this.shipDict;
+    this.board = board
 
 
     }
-
-  shipDict = {
-    "carrier": 5,
-    "battleship": 4,
-    "destroyer": 3,
-    "submarine": 3,
-    "patrolboat": 2,
-  }  
-  
-
 }
 
 // Players can take turns playing the game by attacking the enemy Gameboard.

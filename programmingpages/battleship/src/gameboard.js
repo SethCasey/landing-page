@@ -1,158 +1,71 @@
 import { Ship } from "./shipMaker.js"
 
-export class Gameboard {
-  constructor(dimensions = [9,9]) { // default dimensions are 10x10
-    if (dimensions[0] < 0 || dimensions[1] < 0) {
-      return
+export class Gameboard { // one of these is made for each player!
+  constructor(gridsize = 100) { // default dimensions are 10x10
+    if (gridsize < 0) {
+      return false
     }
-    this.dimensions = dimensions;
+    this.gridsize = gridsize;
     this.ships = [];
+    this.shipLocations = [];
     this.prevHits = [];
     this.prevMisses = [];
     this.shipsSunk = 0;
   }
 
-  addShip(length, positionX, positionY, direction) {
-    let newship = new Ship(length, positionX, positionY, direction)
-    if (newship != undefined) {
-      this.ships.push(newship);
+  shipDict = {
+    "carrier": 5,
+    "battleship": 4,
+    "destroyer": 3,
+    "submarine": 3,
+    "patrolboat": 2,
+  }
+  
+  putShipOnBoard(type, length, direction, startSquare) {
+    if (!this.shipDict[type]) {
+      console.log(`Yip. Activated. ${this.shipDict[type]}`)
+      return false
     }
+    for (let i = 0; i < length; i++) { // test for other ship in any of the potential placed squares
+      if (direction == 0) {
+        if (this.shipLocations.includes(startSquare)) {
+          return false
+        }
+      } else {
+        if (this.shipLocations.includes(startSquare + (i * 10))) {
+          return false
+        }
+      }
+    }
+    let ship = new Ship;
+    this.shipLocations.push(ship.placeShip(startSquare, this.shipDict[type], direction));
+    delete(this.shipDict[type]);
+    return true
   }
 
-  receiveAttack([x,y]) {
+  receiveAttack(attackSquare) {
     // in receiveAttack, any previous hits are recorded as a string in the form of x,y.
     // This is because apparently array.prototype.includes() doesn't quite work when
     // searching for arrays within arrays
-    if (this.prevHits.includes(`${x},${y}`)) { 
+    if (this.prevHits.includes(attackSquare) || this.prevMisses.includes(attackSquare)) {
       return false
     }
-    for (let i = 0; i < this.ships.length; i++) {
-      let xExists = false;
-      let yExists = false;
-      for (let j = this.ships[i].hitbox.start[0]; j <= this.ships[i].hitbox.end[0]; j++) {
-        if (x == j) {
-          xExists = true;
-          break
-        }
+    for (let x = 0; x < this.shipLocations.length; x++) {
+      if (this.shipLocations[x].includes(attackSquare)) {
+        this.shipLocations[x].splice(attackSquare, 1);
+        this.prevHits.push(attackSquare);
+        this.allShipsAreSunk();
+        return true
       }
-      for (let k = this.ships[i].hitbox.start[1]; k <= this.ships[i].hitbox.end[1]; k++) {
-        if (y == k) {
-          yExists = true;
-          break
-        }
-      }
-      if (xExists && yExists) {
-        this.prevHits.push(`${x},${y}`);
-        this.ships[i].hit();
-        return true;
-      }
-      this.prevMisses.push(`${x},${y}`);
-      return false;
     }
+    this.prevMisses.push(attackSquare);
+    return false
   }
 
-  allShipsSunk() {
-    for (let i = 0; i < this.ships.length; i++) {
-      if (this.ships[i].sunk()) {
-        this.shipsSunk++;
-      }
+  allShipsAreSunk() {
+    if (this.shipLocations.length == 0) {
+      return true
     }
-    if (this.shipsSunk >= this.ships.length - 1){
-      return true;
-    }
-    return false;
+    return false
   }
 }
-
-    // strike([x,y]) {
-    //       let yExists = false;
-    //       let xExists = false;
-    //       for (let i = hitbox.start[0]; i <= hitbox.end[0]; i++) { // checking x-axis values
-    //         if (i == x) {
-    //           xExists = true;
-    //         }
-    //       }
-    //       for (let i = hitbox.start[1]; i <= hitbox.end[1]; i++) { // checking y-axis values
-    //         if (i == y) {
-    //           yExists = true;
-    //         }
-    //       }
-    //       if (xExists && yExists) {
-    //         return true;
-    //       } else {
-    //         return false;
-    //       }
-    //     },
-
- 
-
-
-//   // Create Gameboard factory.
-
-// //     Note that we have not yet created any User Interface. We should know our code is 
-// // coming together by running the tests. You shouldn’t be relying on console.logs or DOM 
-// // methods to make sure your code is doing what you expect it to.
-
-// //     Gameboards should be able to place ships at specific coordinates by calling the 
-// // ship factory function.
-
-// //     Gameboards should have a receiveAttack function that takes a pair of coordinates,
-// //  determines whether or not the attack hit a ship and then sends the ‘hit’ function 
-// // to the correct ship, or records the coordinates of the missed shot.
-
-// //     Gameboards should keep track of missed attacks so they can display them properly.
-
-// //     Gameboards should be able to report whether or not all of their ships have been sunk.
-
-
-// export const Gameboard = (x = 10, y = 10,) => {
- 
-//   let currentId = 0;
-//   let ships = [];
-//   let borders = [x, y]; // max number for board x dimension or y dimension, AND nothing below 0
-
-//   return {
-//     borders,
-
-//     strike([x,y]) {
-//       let yExists = false;
-//       let xExists = false;
-//       for (let i = hitbox.start[0]; i <= hitbox.end[0]; i++) { // checking x-axis values
-//         if (i == x) {
-//           xExists = true;
-//         }
-//       }
-//       for (let i = hitbox.start[1]; i <= hitbox.end[1]; i++) { // checking y-axis values
-//         if (i == y) {
-//           yExists = true;
-//         }
-//       }
-//       if (xExists && yExists) {
-//         return true;
-//       } else {
-//         return false;
-//       }
-//     },
-  
-//     addShip(playerId, length, posx, posy, direction) {
-//       let shipId = currentId; // assign id number to use as key in Gameboard object's dictionary
-//       this.currentId++; // increment gameboard object's currentId so no two ships will have the same ID
-//       playerId = playerId; // assign ship player's id
-
-      
-//       if (posx > borders[0] || posy > borders[1] || posx < 0 || posy < 0) {
-//         return "The ship must stay within the borders of the gameboard"
-//       };
-
-      
-//       let newShip = Ship(length, posx, posy, direction);
-//       this.ships.push({
-//         "id": shipId,
-//         "player": playerId,
-//         "hitbox": newShip.hitbox,
-//       } )
-//     }
-//   }
-
-
-// }
