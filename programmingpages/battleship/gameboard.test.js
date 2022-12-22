@@ -2,12 +2,12 @@ import { Gameboard } from "./src/gameboard.js"
 import { Ship } from "./src/shipMaker.js"
 
 test("Gameboard creates a gameboard", () => {
-  let newboard = new Gameboard([5,5]);
-  expect(newboard.gridsize).toEqual([5,5]);
+  let newboard = new Gameboard(5,5);
+  expect(newboard.gridsize).toEqual(25);
 })
 
 test("Predefined ships are accessible", () => {
-  let newgame = new Gameboard;;
+  let newgame = new Gameboard;
   
   expect(newgame.shipDict.carrier).toEqual(5);
   expect(newgame.shipDict["battleship"]).toEqual(4);
@@ -42,4 +42,17 @@ test("Testing off-by-one error on ship placement", () => {
   expect(newgame.receiveAttack(4)).toEqual(false);
   expect(newgame.prevHits.length).toEqual(0);
   expect(newgame.prevMisses.length).toEqual(1);
+})
+
+test("Any out of bounds placement functions properly and doesn't fill array", () => {
+  let newgame = new Gameboard;
+  expect(newgame.shipLocations.length).toEqual(0);
+  expect(newgame.putShipOnBoard("battleship", newgame.shipDict["battleship"], 0, 9)).toEqual(false);
+  expect(newgame.shipLocations.length).toEqual(0);
+  expect(newgame.putShipOnBoard("battleship", newgame.shipDict["battleship"], 0, 5)).toEqual(true);
+  expect(newgame.shipLocations.length).toEqual(1);
+  expect(newgame.putShipOnBoard("battleship", newgame.shipDict["battleship"], 1, 9)).toEqual(false);
+  expect(newgame.shipLocations.length).toEqual(1);
+  expect(newgame.putShipOnBoard("battleship", newgame.shipDict["battleship"], 1, 0)).toEqual(true);
+  expect(newgame.shipLocations.length).toEqual(2);
 })
