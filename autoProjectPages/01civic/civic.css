@@ -80,7 +80,8 @@ header {
     grid-row: 2;
 }
 
-#right_arrow, #left_arrow {
+#right_arrow,
+#left_arrow {
     justify-self: center;
     align-self: center;
     font-size: 5em;
@@ -93,14 +94,17 @@ header {
     margin-left: auto;
     margin-right: auto;
     padding: 0;
-    overflow: hidden; 
+    overflow: hidden;
     /* I've tweaked the settings of view width between
     #slideshow, #slideshow>*>img, and #slideshow>* in
     order to get them to display right. I'm still not
     happy with how it looks, but I'll have to work on
     an alternative */
-    width: 800px;
-    height: 500px;
+    /* width: 800px; */
+    /* height: 500px; */
+    max-height: 80vh;
+    max-width: 80vw;
+
 }
 
 .content>#slideshow {
@@ -109,12 +113,15 @@ header {
 }
 
 #slideshow>*>img {
-    max-width: 800px;
-    max-height: 400px;
+    /* max-width: 800px; */
+    /* max-height: 400px; */
+    max-height: 80vh;
+    max-width: 80vw;
 }
 
 #slideshow>*>p {
-    width: 800px;
+    /* width: 800px; */
+    max-width: 80vw;
 
 }
 
@@ -124,8 +131,11 @@ header {
     display: block;
     margin-left: 5vw;
     margin-right: 5vw;
-    width: 800px;
-    height: 500px;
+    /* width: 800px;
+    height: 500px; */
+
+    max-height: 80vh;
+    max-width: 80vw;
 }
 
 #slideshow_navigation {
@@ -139,13 +149,14 @@ header {
     background-color: black;
 }
 
+
 .dot {
     height: 25px;
     width: 25px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
-  }
+}
 
 .dot.selected {
     background-color: black;
