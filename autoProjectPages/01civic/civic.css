@@ -112,12 +112,16 @@ header {
     grid-row: 2;
 }
 
-#slideshow>*>img {
-    /* max-width: 800px; */
-    /* max-height: 400px; */
+img {
+    max-height: 60vh;
+    max-width:  60vw;
+    
+}
+
+/* #slideshow>*>img {
     max-height: 80vh;
     max-width: 80vw;
-}
+} */
 
 #slideshow>*>p {
     /* width: 800px; */

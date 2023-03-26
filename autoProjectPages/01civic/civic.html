@@ -40,7 +40,7 @@ webcomics like XKCD or other picture-based 'stories' -->
     </div>
     <div class="content">
         <h2 id="title">Knock Knock, Who's There</h2>
-        <button id="left_arrow">&#8653;</button>
+        <button id="left_arrow" onclick="plusDivs(-1)">&#10094;</button>
         <div id="slideshow">
 
             <div id="intro" class="slide">
@@ -53,7 +53,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     otherwise he didn't know what was wrong with it.
                 </p>
             </div>
-            <div class="heading" class="slide">
+            <div id="heading" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/02civicDelivery.jpg" alt="Civic off the trailer">
 
                 <h3>He said it wouldn't start</h3>
@@ -76,7 +76,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     show up with an R18 engine. Finally, one showed up.
                 </p>
             </div>
-            <div class="the_choice" class="slide">
+            <div id="the_choice" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/07theChoice.jpg" alt="The donor Civic">
                 <p>
                     With my dad's help, we started removing the extra components we
@@ -84,7 +84,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     that were holding the engine in.
                 </p>
             </div>
-            <div class="ready_to_lift" class="slide">
+            <div id="ready_to_lift" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/08readyToLift.jpg"
                     alt="Everything disconnected, ready to lift">
                 <p>
@@ -93,14 +93,14 @@ webcomics like XKCD or other picture-based 'stories' -->
                     Then, we lifted.
                 </p>
             </div>
-            <div class="on_the_way_out" class="slide">
+            <div id="on_the_way_out" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/09onTheWayOut.jpg" alt="Pulling out the engine">
                 <p>
                     We had some trouble getting the torque converter to stay in the
                     transmission, but eventually got it separated and the engine out.
                 </p>
             </div>
-            <div class="engine_pulled" class="slide">
+            <div id="engine_pulled" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/10enginePulled.jpg" alt="Engine on the cart">
                 <p>
                     And checked out of the pick'n'pull! We actually were able to get
@@ -109,7 +109,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                 </p>
                 <!-- <img src="../autoProjectImages/civicEngineSwap/11checkout.jpg" alt="Checking out at the pick'n'pull"> -->
             </div>
-            <div class="engine_pulled" class="slide">
+            <div id="engine_pulled" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/12headingHome.jpg" alt="Engine in truck bed">
 
                 <p>
@@ -129,7 +129,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     smoothly as possible.
                 </p>
             </div>
-            <div class="wrapped" class="slide">
+            <div id="wrapped" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/14weatherWrap.jpg"
                     alt="Donor engine, wrapped to protect it from the weather">
 
@@ -139,7 +139,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     blown engine to be pulled.
                 </p>
             </div>
-            <div class="clear_way" class="slide">
+            <div id="clear_way" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/15clearingTheWay.jpg" alt="An in-progress picture of clearing the accessories off the
                     blown engine">
                 <p>
@@ -148,14 +148,14 @@ webcomics like XKCD or other picture-based 'stories' -->
                     burn out.
                 </p>
             </div>
-            <div class="ac_system" class="slide">
+            <div id="ac_system" class="slide">
                 <p>
                     I didn't want to have to evacuate or refill the A/C system or power
                     steering <sup>(not pictured)</sup>, so I made sure they were out of
                     the way for pulling the engine.
                 </p>
             </div>
-            <div class="engine_stand" class="slide">
+            <div id="engine_stand" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/17engineStand.jpg"
                     alt="Getting the donor engine on an engine stand">
                 <p>
@@ -163,7 +163,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     donor engine on an engine stand so that I could swap over accessories.
                 </p>
             </div>
-            <div class="engine_out" class="slide">
+            <div id="engine_out" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/18blownEngineOut.jpg"
                     alt="Blown engine, removed from Civic">
                 <p>
@@ -189,7 +189,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     So, begins the process of swapping over components.
                 </p>
             </div>
-            <div class="less_carbon" class="slide">
+            <div id="less_carbon" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/21inspectingCamCover.jpg" alt="Inspecting the cam cap">
                 <p>
                     Unfortunately, due to rain interrupting nearly every day of work,
@@ -200,7 +200,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     compared to the 170,000 mile engine the Civic originally had.
                 </p>
             </div>
-            <div class="bell_housing" class="slide">
+            <div id="bell_housing" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/22inspectingBell.jpg"
                     alt="Inspecting the bell housing attachment point">
                 <p>
@@ -210,7 +210,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     and to attach the lifting chains.
                 </p>
             </div>
-            <div class="sensors" class="slide">
+            <div id="sensors" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/23inspectingSensors.jpg"
                     alt="Inspecting the sensors on the front of the engine">
                 <p>
@@ -219,7 +219,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     trans and the engine for installation.
                 </p>
             </div>
-            <div class="mating_engine_trans" class="slide">
+            <div id="mating_engine_trans" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/23-5engineTransMated.jpg"
                     alt="Engine and Trans mated together">
                 <p>
@@ -228,7 +228,8 @@ webcomics like XKCD or other picture-based 'stories' -->
                     install the engine and transmission assembly.
                 </p>
             </div>
-            <div id="installingEngine" class="slide"><img src="../autoProjectImages/civicEngineSwap/24partsComingIn.jpg"
+            <div id="installingEngine" class="slide">
+                <img src="../autoProjectImages/civicEngineSwap/24partsComingIn.jpg"
                     alt="Engine and transmission in the engine bay!">
                 <p>
                     Unfortunately the installation of the engine was all hands on
@@ -236,7 +237,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     engine and transmission installation, but here it is!
                 </p>
             </div>
-            <div class="first_test_run" class="slide">
+            <div id="first_test_run" class="slide">
                 <p>
                     I ran the engine for all of 10 seconds to ensure I didn't hear
                     any awful noises - But with the catalytic converter not installed,
@@ -244,7 +245,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     noises. It certainly sounded better than the old engine!
                 </p>
             </div>
-            <div class="accessories_installed" class="slide">
+            <div id="accessories_installed" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/25moreComplete.jpg" alt="More parts in engine bay">
                 <p>
                     Here you can see many of the accessories have been installed,
@@ -252,7 +253,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     air intake, and more.
                 </p>
             </div>
-            <div class="radiator_installed" class="slide">
+            <div id="radiator_installed" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/26radIn.jpg" alt="Radiator installed">
                 <p>
                     Then in goes the radiator, after inspecting to ensure that nothing
@@ -261,7 +262,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                     as any hoses for the cooling system, vacuum, and EGR systems.
                 </p>
             </div>
-            <div class="radiator_support_installed" class="slide">
+            <div id="radiator_support_installed" class="slide">
                 <img src="../autoProjectImages/civicEngineSwap/27radBraceIn.jpg"
                     alt="Installation of the radiator support">
                 <p>
@@ -273,7 +274,7 @@ webcomics like XKCD or other picture-based 'stories' -->
                 </p>
             </div>
         </div>
-        <button id="right_arrow">&#8655;</button>
+        <button id="right_arrow" onclick="plusDivs(+1)">&#10095;</button>
     </div>
     <div id="slideshow_navigation"></div>
     <!--add more pictures here-->
