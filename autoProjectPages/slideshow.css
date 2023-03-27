@@ -13,7 +13,7 @@ header {
     display: flex;
     background-color: #1F2937;
     grid-column: 1 / 3;
-    max-height: 100px;
+    /* max-height: 100px; */
 }
 
 .rightLinks,
@@ -151,6 +151,10 @@ img {
 
 #slideshow_navigation>.show_indicator {
     background-color: black;
+}
+
+#slideshow_navigation>*{
+    gap: 10px;
 }
 
 

@@ -103,6 +103,10 @@ export default class FormElement {
     submitButtonValidation(inputElementArray = []) {
         this.element.addEventListener("click", (e) => {
             for (let x = 0; x < inputElementArray.length; x++) {
+                if (inputElementArray[x].type == "password") {
+                    checkPasswordEvent();
+                }
+                
                 if (!inputElementArray[x].validity) {
                     alert("You must fill out the fields properly before submission");
                     return;

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../subPages.css">
+    <link rel="stylesheet" href="../slideshow.css">
+    <script src="../slideshow.js".js" defer></script>
     <title>My DIY OBD 1 and 2 reader</title>
 </head>
 
@@ -27,50 +28,73 @@
         </p>
         <a href="../autoProjects.html">Auto Projects</a>
         <a href="../01civic/civic.html">2006 Civic Engine Swap</a>
+        <a href="../02obdReader/obdReader.html">OBD Reader Project</a>
         <a href="truckPage"></a>
     </div>
     <div class="content">
-        <div class="project">
-            <img src="../autoProjectImages/obdReader/20220423_175921.jpg" alt="An overview of the OBD2-reader set up">
-            <p>
-                An overview of the brain of the OBD 1 and 2 reader
-            </p>
+        <button id="left_arrow" onclick="plusDivs(-1)">&#10094;</button>
+        <div id="slideshow">
+            <div class="slide">
+
+                <p>
+                    Many vehicles in the 1980's and 1990's began to use the On-Board 
+                    Diagnostics, or OBD protocol. This 
+                    allows an external device to plug in to the OBD port and read 
+                    data made available by the Engine Control Unit. This is useful 
+                    for diagnostics and monitoring of various systems that aren't 
+                    displayed on the instrument cluster.
+                </p>
+                <img src="../autoProjectImages/obdReader/20220423_175921.jpg" alt="An overview of the OBD2-reader set up">
+                <p>
+                    An overview of the brain of the OBD 1 and 2 reader
+                </p>
+                <a href="https://en.wikipedia.org/wiki/On-board_diagnostics">
+                    Wikipedia On-Board Diagnostics
+                </a>
+            </div>
+            <div class="slide">
+                <img src="../autoProjectImages/obdReader/20220423_175925.jpg"
+                    alt="The connector to use the OBD1-reader wires">
+                <p>
+                    The OBD1 wires that are plugged into the board
+                </p>
+            </div>
+            <div class="slide">
+                <p>
+                    Modern vehicles use the OBD2 protocol - This is too new for my 95
+                    truck, but I am able to combine the functionality of reading both
+                    OBD1 and OBD2 into one device.
+                </p>
+                <img src="../autoProjectImages/obdReader/20220423_175934.jpg" alt="The serial-to-OBD2 male plug">
+                <p>
+                    The serial-to-OBD2 male plug
+                </p>
+            </div>
+            <div class="slide">
+                <img src="../autoProjectImages/obdReader/20220423_175939.jpg"
+                    alt="The other end of the serial-to-OBD2 cable">
+                <p>
+                    The serial end of the serial-to-OBD2 cable
+                </p>
+            </div>
+            <div class="slide">
+                <img src="../autoProjectImages/obdReader/20220423_175942.jpg"
+                    alt="The serial port for connection to the vehicle">
+                <p>
+                    The serial port of the OBD to USB converter
+                </p>
+            </div>
+            <div class="slide">
+                <img src="../autoProjectImages/obdReader/20220423_175946.jpg"
+                    alt="The wires used to connect to the proper 2 pins on the OBD female end">
+                <p>
+                    The OBD1 wires used to interface with [what pins?] of the OBD1
+                    or ALDL female plug in the truck
+                </p>
+            </div>
         </div>
-        <div class="project">
-            <img src="../autoProjectImages/obdReader/20220423_175925.jpg"
-                alt="The connector to use the OBD1-reader wires">
-            <p>
-                The OBD1 wires that are plugged into the board
-            </p>
-        </div>
-        <div class="project">
-            <img src="../autoProjectImages/obdReader/20220423_175934.jpg" alt="The serial-to-OBD2 male plug">
-            <p>
-                The serial-to-OBD2 male plug
-            </p>
-        </div>
-        <div class="project">
-            <img src="../autoProjectImages/obdReader/20220423_175939.jpg"
-                alt="The other end of the serial-to-OBD2 cable">
-            <p>
-                The serial end of the serial-to-OBD2 cable
-            </p>
-        </div>
-        <div class="project">
-            <img src="../autoProjectImages/obdReader/20220423_175942.jpg"
-                alt="The serial port for connection to the vehicle">
-            <p>
-                The serial port of the OBD to USB converter
-            </p>
-        </div>
-        <div class="project">
-            <img src="../autoProjectImages/obdReader/20220423_175946.jpg"
-                alt="The wires used to connect to the proper 2 pins on the OBD female end">
-            <p>
-                The OBD1 wires used to interface with [what pins?] of the OBD1
-                or ALDL female plug in the truck
-            </p>
-        </div>
+
+        <button id="right_arrow" onclick="plusDivs(+1)">&#10095;</button>
     </div>
     <footer>
         <p>Copyright Seth 2021-2022</p>
